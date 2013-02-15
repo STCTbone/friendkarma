@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215160946) do
+ActiveRecord::Schema.define(:version => 20130215163209) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment_text"
-    t.integer  "user_id"
+    t.integer  "membership_id"
     t.integer  "job_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "groups", :force => true do |t|
@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(:version => 20130215160946) do
 
   create_table "requests", :force => true do |t|
     t.integer  "job_id"
-    t.integer  "user_id"
+    t.integer  "membership_id"
     t.text     "request_text"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "users", :force => true do |t|
