@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  friend_karma_value: 1
+  time: 2013-02-15 10:07:29
+  group_id: 1
+  membership_id: 1
+
+two:
+  name: MyString
+  friend_karma_value: 1
+  time: 2013-02-15 10:07:29
+  group_id: 1
+  membership_id: 1

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @job.name %>
+</p>
+
+<p>
+  <b>Friend karma value:</b>
+  <%= @job.friend_karma_value %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @job.time %>
+</p>
+
+<p>
+  <b>Group:</b>
+  <%= @job.group_id %>
+</p>
+
+<p>
+  <b>Membership:</b>
+  <%= @job.membership_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>
