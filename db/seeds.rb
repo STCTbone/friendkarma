@@ -6,19 +6,33 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-names = [
-    {name: 'Matt Rieger'},
-    {name: 'Michael Mayhaffy'},
-    {name: 'Shawnna X. Huang'}
+users = [
+    {name: 'Matt Rieger', email: 'matthew.rieger@gmail.com', friend_karma: 0},
+    {name: 'Michael Mayhaffy', email: 'mayhaffs@gmail.com', friend_karma: 0 },
+    {name: 'Shawnna X. Huang', email: 'shawnaxhuang@gmail.com', friend_karma: 0}
 ]
 
-emails = [
-    {email: 'matthew.rieger@gmail.com'},
-    {email: 'mayhaffs@gmail.com'},
-    {email: 'shawnaxhuang@gmail.com'}
-]
-
-friend_karmas = [0,0,0]
 
 User.destroy_all
-User.create(names, emails, friend_karmas)
+User.create(users)
+
+groups = [
+    {name: 'Coworkers'},
+    {name: 'Family'},
+    {name: 'Friends'}
+
+]
+
+Group.destroy_all
+Group.create(groups)
+
+memeberships = [
+    {group_id: 1, user_id: 2},
+    {group_id: 3, user_id: 2},
+    {group_id: 2, user_id: 2},
+    {group_id: 1, user_id: 1},
+    {group_id: 1, user_id: 3}
+]
+
+Membership.destroy_all
+Membership.create(memeberships)
