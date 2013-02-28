@@ -13,7 +13,7 @@
 <% @requests.each do |request| %>
   <tr>
     <td><%= request.job_id %></td>
-    <td><%= request.user_id %></td>
+    <td><%= request.membership_id %></td>
     <td><%= request.request_text %></td>
     <td><%= link_to 'Show', request %></td>
     <td><%= link_to 'Edit', edit_request_path(request) %></td>
