@@ -26,7 +26,7 @@ groups = [
 Group.destroy_all
 Group.create(groups)
 
-memeberships = [
+memberships = [
     {group_id: 1, user_id: 2},
     {group_id: 3, user_id: 2},
     {group_id: 2, user_id: 2},
@@ -35,4 +35,37 @@ memeberships = [
 ]
 
 Membership.destroy_all
-Membership.create(memeberships)
+Membership.create(memberships)
+
+jobs = [
+    {name: "Groceries", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 1, membership_id: 1},
+    {name: "Coffee", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 2, membership_id: 3},
+    {name: "Laundry", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 3, membership_id: 2},
+    {name: "Office Supplies", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 1, membership_id: 5},
+    {name: "Booze", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 3, membership_id: 2},
+]
+
+Job.destroy_all
+Job.create(jobs)
+
+requests = [
+    {job_id: 1, membership_id: 5, request_text: "Can you get me some milk?"},
+    {job_id: 2, membership_id: 3, request_text: "How about a latte?"},
+    {job_id: 3, membership_id: 2, request_text: "My undies are grungy"},
+    {job_id: 2, membership_id: 3, request_text: "Double espresso, please."},
+    {job_id: 5, membership_id: 2, request_text: "Olde English please."}
+]
+
+Request.destroy_all
+Request.create(requests)
+
+comments = [
+    {comment_text: "Awesome!", membership_id: 5, job_id: 1},
+    {comment_text: "Sucks", membership_id: 3, job_id: 2},
+    {comment_text: "Gross!", membership_id: 2, job_id: 3},
+    {comment_text: "Ok", membership_id: 3, job_id: 2},
+    {comment_text: "Tasty!", membership_id: 2, job_id: 5}
+]
+
+Comment.destroy_all
+Comment.create(comments)
