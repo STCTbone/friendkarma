@@ -2,7 +2,7 @@ FriendKarma::Application.routes.draw do
 
   resources :password_resets
 
-  root to: 'users#index'
+  root to: 'user_sessions#new'
 
 
   resources :users do

@@ -1,6 +1,12 @@
 class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
+  before_filter :is_admin
+  def is_admin
+    unless current_user.admin
+      redirect_to root_path, notice: "Access Denied"
+    end
+  end
   def index
     @memberships = Membership.all
 
