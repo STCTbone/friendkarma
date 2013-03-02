@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  # GET /users
-  # GET /users.json
+
+  skip_before_filter :require_login, only: [:index, :new, :create, :activate]
+
   def index
     @users = User.all
 
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to :users, notice: 'User was successfully created.' }
         format.json { render json: @user, status: :created, location: @user }
       else
         format.html { render action: "new" }
@@ -78,6 +79,15 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
+    end
+  end
+
+  def activate
+    if (@user = User.load_from_activation_token(params[:id]))
+      @user.activate!
+      redirect_to(login_path, notice: "User was successfully activated.")
+    else
+      not_authenticated
     end
   end
 end
