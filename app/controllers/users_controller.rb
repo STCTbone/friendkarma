@@ -1,6 +1,20 @@
 class UsersController < ApplicationController
 
   skip_before_filter :require_login, only: [:index, :new, :create, :activate]
+  before_filter :is_user_or_admin, only: [:show, :edit, :update]
+  before_filter :is_admin, only:[:index]
+
+  def is_user_or_admin
+    unless (current_user.id == params[:id].to_i) || (current_user.admin)
+      redirect_to root_path, notice: "Acess Denied"
+    end
+  end
+
+  def is_admin
+    unless current_user.admin
+      redirect_to root_path, notice: "Acess Denied"
+    end
+  end
 
   def index
     @users = User.all
