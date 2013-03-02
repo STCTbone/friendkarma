@@ -1,14 +1,10 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :friend_karma, :name
+  authenticates_with_sorcery!
+  # attr_accessible :title, :body
+  attr_accessible :username, :email, :password, :password_confirmation, :first, :last, :phone, :friend_karma, :admin
 
-  has_many :groups, through: :memberships
-  has_many :jobs, through: :memberships
-  has_many :requests
-  has_many :comments
+  validates_length_of :password, :minimum => 3, :message => "password must be at least 3 characters long", :if => :password
+  validates_confirmation_of :password, :message => "should match confirmation", :if => :password
 
-  validates_presence_of :email, :friend_karma, :name
-  validates_uniqueness_of :email
-
-
-
+  validates_uniqueness_of :email, :phone
 end

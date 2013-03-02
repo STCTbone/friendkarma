@@ -1,4 +1,16 @@
 FriendKarma::Application.routes.draw do
+
+  resources :password_resets
+
+  root to: 'users#index'
+
+
+  resources :users do
+    member do
+      get :activate
+    end
+  end
+
   resources :comments
 
 
@@ -13,8 +25,10 @@ FriendKarma::Application.routes.draw do
 
   resources :groups
 
+  resources :user_sessions
 
-  resources :users
+  match 'login' => 'user_sessions#new', as: :login
+  match 'logout' => 'user_sessions#destroy', as: :logout
 
 
   # The priority is based upon order of creation:
