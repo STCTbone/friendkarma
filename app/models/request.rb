@@ -4,5 +4,5 @@ class Request < ActiveRecord::Base
   belongs_to :job
   belongs_to :membership
 
-  validates_presence_of :job_id, :request_text, :membership_id
+  validates_presence_of :job_id, :request_text, :user_id
 end
