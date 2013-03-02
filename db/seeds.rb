@@ -7,9 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = [
-    {username: "Matt", first: 'Matt', last: 'Rieger', email: 'matthew.rieger@gmail.com', friend_karma: 0},
-    {username: "Michael", first: 'Michael', last: 'Mahaffey', email: 'mayhaffs@gmail.com', friend_karma: 0},
-    {username: "Shawnna", first: 'Shawnna', last: 'Huang', email: 'shawnaxhuang@gmail.com', friend_karma: 0}
+    {username: "Matt", first: 'Matt', last: 'Rieger', email: 'matthew.rieger@gmail.com', friend_karma: 0, phone: '8476410915'},
+    {username: "Michael", first: 'Michael', last: 'Mahaffey', email: 'mayhaffs@gmail.com', friend_karma: 0, phone: '8475255118'},
+    {username: "Shawnna", first: 'Shawnna', last: 'Huang', email: 'shawnaxhuang@gmail.com', friend_karma: 0, phone: '5034700033'}
 ]
 
 
