@@ -16,8 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :friend_karma_value %><br />
-    <%= f.number_field :friend_karma_value %>
+    <%= f.hidden_field :friend_karma_value %>
   </div>
   <div class="field">
     <%= f.label :time %><br />
@@ -28,8 +27,7 @@
     <%= f.number_field :group_id %>
   </div>
   <div class="field">
-    <%= f.label :membership_id %><br />
-    <%= f.number_field :membership_id %>
+    <%= f.hidden_field :membership_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

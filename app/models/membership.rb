@@ -3,4 +3,7 @@ class Membership < ActiveRecord::Base
   belongs_to :user
   belongs_to :group
 
+  has_many :jobs
+  has_many :comments
+  has_many :requests
 end

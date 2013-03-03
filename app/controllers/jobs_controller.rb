@@ -15,7 +15,8 @@ class JobsController < ApplicationController
   end
 
   def index
-    @jobs = Job.all
+    user_jobs = current_user.jobs
+    @jobs = Job.where(id: current_user.jobs )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,7 +55,8 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(params[:job])
-
+    @job.friend_karma_value = 1
+    @job.membership_id = Membership.where("user_id = ? AND group_id = ?", current_user.id, @job.group).first.id
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
