@@ -32,22 +32,22 @@ Group.destroy_all
 Group.create(groups)
 
 memberships = [
-    {group_id: 1, user_id: 2},
-    {group_id: 3, user_id: 2},
-    {group_id: 2, user_id: 2},
-    {group_id: 1, user_id: 1},
-    {group_id: 1, user_id: 3}
+    {group_id: Group.find_by_name('Coworkers').id, user_id: User.find_by_username("Matt").id},
+    {group_id: Group.find_by_name('Family').id, user_id: User.find_by_username("Michael").id},
+    {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Shawnna").id},
+    {group_id: Group.find_by_name('Coworkers').id, user_id: User.find_by_username("Matt").id},
+    {group_id: Group.find_by_name('Family').id, user_id: User.find_by_username("Michael").id}
 ]
 
 Membership.destroy_all
 Membership.create(memberships)
 
 jobs = [
-    {name: "Groceries", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 1, membership_id: 1},
-    {name: "Coffee", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 2, membership_id: 3},
-    {name: "Laundry", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 3, membership_id: 2},
-    {name: "Office Supplies", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 1, membership_id: 5},
-    {name: "Booze", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: 3, membership_id: 2},
+    {name: "Groceries", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Coworkers').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Coworkers').id, User.find_by_username("Matt").id ).first.id},
+    {name: "Coffee", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Family').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Family').id, User.find_by_username("Michael").id).first.id},
+    {name: "Laundry", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Friends').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Friends').id, User.find_by_username("Shawnna").id).first.id},
+    {name: "Office Supplies", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Coworkers').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Coworkers').id, User.find_by_username("Matt").id).first.id},
+    {name: "Booze", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Family').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Family').id, User.find_by_username("Michael").id).first.id},
 ]
 
 Job.destroy_all
