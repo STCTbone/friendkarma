@@ -6,6 +6,7 @@ FriendKarma::Application.routes.draw do
 
 
   resources :users do
+    resources :memberships
     member do
       get :activate
     end
@@ -18,9 +19,6 @@ FriendKarma::Application.routes.draw do
 
 
   resources :jobs
-
-
-  resources :memberships
 
 
   resources :groups
