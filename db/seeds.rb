@@ -54,22 +54,22 @@ Job.destroy_all
 Job.create(jobs)
 
 requests = [
-    {job_id: 1, membership_id: 5, request_text: "Can you get me some milk?"},
-    {job_id: 2, membership_id: 3, request_text: "How about a latte?"},
-    {job_id: 3, membership_id: 2, request_text: "My undies are grungy"},
-    {job_id: 2, membership_id: 3, request_text: "Double espresso, please."},
-    {job_id: 5, membership_id: 2, request_text: "Olde English please."}
+    {job_id: Job.find_by_name("Groceries").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Coworkers'), User.find_by_username("Matt")).first.id, request_text: "Can you get me some milk?"},
+    {job_id: Job.find_by_name("Coffee").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Michael")).first.id, request_text: "How about a latte?"},
+    {job_id: Job.find_by_name("Laundry").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Friends'), User.find_by_username("Shawnna")).first.id, request_text: "My undies are grungy"},
+    {job_id: Job.find_by_name("Office Supplies").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Coworkers'), User.find_by_username("Matt")).first.id, request_text: "Double espresso, please."},
+    {job_id: Job.find_by_name("Booze").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Michael")).first.id, request_text: "Olde English please."}
 ]
 
 Request.destroy_all
 Request.create(requests)
 
 comments = [
-    {comment_text: "Awesome!", membership_id: 5, job_id: 1},
-    {comment_text: "Sucks", membership_id: 3, job_id: 2},
-    {comment_text: "Gross!", membership_id: 2, job_id: 3},
-    {comment_text: "Ok", membership_id: 3, job_id: 2},
-    {comment_text: "Tasty!", membership_id: 2, job_id: 5}
+    {comment_text: "Awesome!", membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Coworkers'), User.find_by_username("Matt")).first.id, job_id: Job.find_by_name("Groceries").id},
+    {comment_text: "Sucks", membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Michael")).first.id, job_id: Job.find_by_name("Coffee").id},
+    {comment_text: "Gross!", membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Friends'), User.find_by_username("Shawnna")).first.id, job_id: Job.find_by_name("Laundry").id},
+    {comment_text: "Ok", membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Coworkers'), User.find_by_username("Matt")).first.id, job_id: Job.find_by_name("Office Supplies").id},
+    {comment_text: "Tasty!", membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Michael")).first.id, job_id: Job.find_by_name("Booze").id}
 ]
 
 Comment.destroy_all
