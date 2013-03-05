@@ -14,12 +14,9 @@ FriendKarma::Application.routes.draw do
 
   resources :comments
 
-
   resources :requests
 
-
   resources :jobs
-
 
   resources :groups
 

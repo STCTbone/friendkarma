@@ -2,9 +2,30 @@
 
 <p>
   <b>Name:</b>
-  <%= @group.name %>
+  <%= @group.name %> | <%= link_to 'Edit', edit_group_path(@group) %> |
+<%= link_to 'Back', groups_path %>
 </p>
 
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Phone</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+  <% @group.users.each do |groupusers| %>
+  <tr>
+    <td><%= groupusers.username %></td>
+    <td><%= groupusers.email %></td>
+    <td><%= groupusers.first %></td>
+    <td><%= groupusers.last %></td>
+    <td><%= groupusers.phone %></td>
+  </tr>
+  <% end %>
+</table>
+
