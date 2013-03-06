@@ -35,8 +35,6 @@ memberships = [
     {group_id: Group.find_by_name('Coworkers').id, user_id: User.find_by_username("Matt").id},
     {group_id: Group.find_by_name('Family').id, user_id: User.find_by_username("Michael").id},
     {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Shawnna").id},
-    {group_id: Group.find_by_name('Coworkers').id, user_id: User.find_by_username("Matt").id},
-    {group_id: Group.find_by_name('Family').id, user_id: User.find_by_username("Michael").id}
 ]
 
 Membership.destroy_all
