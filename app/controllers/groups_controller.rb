@@ -1,8 +1,11 @@
 class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
+
+
   def index
-    @groups = Group.all
+    @groups = current_user.groups
+    # @group = Group.find(params[:id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,6 +17,7 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @group = Group.find(params[:id])
+    @membership = Membership.new
 
     respond_to do |format|
       format.html # show.html.erb
@@ -42,8 +46,10 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(params[:group])
 
+
     respond_to do |format|
       if @group.save
+        Membership.create({user_id: current_user.id, group_id: @group.id})
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render json: @group, status: :created, location: @group }
       else

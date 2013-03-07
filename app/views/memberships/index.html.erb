@@ -1,26 +1,18 @@
-<h1>My Memberships</h1>
+<h1><%= current_user.username.capitalize %>'s Memberships</h1>
+
+<p>*Leaving a group is permanent. Rejoining groups is only possible through a member invitation.*</p>
 
 <table>
   <tr>
-    <th>User</th>
-    <th>Group</th>
-    <th></th>
-    <th></th>
+    <th>Groups</th>
     <th></th>
   </tr>
 
 <% @memberships.each do |membership| %>
   <tr>
-    <td><%= membership.user.username %></td>
     <td><%= membership.group.name %></td>
+    <td><%= link_to 'Leave Group', membership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-
-
-
-<!--     <td><= link_to 'Show', user_group %></td>
-    <td><= link_to 'Edit', edit_membership_path(membership) %></td>
-    <td><= link_to 'Destroy', membership, method: :delete, data: { confirm: 'Are you sure?' } %></td>
- -->
 
   </tr>
 <% end %>
@@ -29,3 +21,4 @@
 <br />
 
 <%= link_to 'New Membership', new_membership_path %>
+

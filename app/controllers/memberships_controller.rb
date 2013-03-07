@@ -2,7 +2,7 @@ class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
   def index
-    @memberships = Membership.find_all_by_user_id(params[:user_id])
+    @memberships = current_user.memberships
 
     respond_to do |format|
       format.html # index.html.erb
