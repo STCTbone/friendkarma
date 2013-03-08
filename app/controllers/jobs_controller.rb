@@ -1,6 +1,19 @@
 class JobsController < ApplicationController
-  # GET /jobs
-  # GET /jobs.json
+
+  before_filter :is_user_or_admin, except: [:index, :new, :create]
+
+  def is_user_or_admin
+    unless (current_user.id == Job.find_by_id(params[:id].to_i).membership.user.id ) || (current_user.admin)
+      redirect_to root_path, notice: "Access Denied"
+    end
+  end
+
+  def is_admin
+    unless current_user.admin
+      redirect_to root_path, notice: "Access Denied"
+    end
+  end
+
   def index
     @jobs = Job.all
 
