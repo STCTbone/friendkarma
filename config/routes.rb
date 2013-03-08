@@ -4,24 +4,20 @@ FriendKarma::Application.routes.draw do
 
   root to: 'users#index'
 
-
   resources :users do
+
     member do
       get :activate
     end
   end
 
-  resources :comments
+  resources :memberships
 
+  resources :comments
 
   resources :requests
 
-
   resources :jobs
-
-
-  resources :memberships
-
 
   resources :groups
 
