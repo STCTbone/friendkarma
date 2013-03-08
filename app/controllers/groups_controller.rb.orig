@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+<<<<<<< HEAD
  before_filter :is_user_or_admin, except: [:index, :new, :create]
 
   def is_user_or_admin
@@ -11,10 +12,15 @@ class GroupsController < ApplicationController
       redirect_to root_path, notice: "Access Denied"
     end
   end
+=======
+  # GET /groups
+  # GET /groups.json
+>>>>>>> master
 
 
   def index
     @groups = current_user.groups
+    # @group = Group.find(params[:id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,6 +60,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new(params[:group])
+
 
     respond_to do |format|
       if @group.save

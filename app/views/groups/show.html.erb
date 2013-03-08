@@ -1,10 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
-  <%= @group.name %>
+  <h1><%= @group.name %> Details</h1>
+  <%= link_to 'Edit Membership', memberships_path %> |
+<%= link_to 'Back', groups_path %>
 </p>
 
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>First</th>
+    <th>Last</th>
+    <th>Phone</th>
+    <th></th>
+  </tr>
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+  <% @group.users.each do |groupuser| %>
+  <tr>
+    <td><%= groupuser.username %></td>
+    <td><%= groupuser.email %></td>
+    <td><%= groupuser.first %></td>
+    <td><%= groupuser.last %></td>
+    <td><%= groupuser.phone %></td>
+    <td></td>
+  </tr>
+  <% end %>
+</table>
+<br />
+
+<!-- Add New User Here -->
+
+<br />
+<br />
+<b>Add New User</b>
+<br />
+<br />
+
+<%= form_for(@membership) do |f| %>
+  <% if @membership.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
+
+      <ul>
+      <% @membership.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.collection_select :user_id, User.all, :id, :username %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :group_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
