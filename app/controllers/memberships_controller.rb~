@@ -1,12 +1,6 @@
 class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
-  before_filter :is_admin
-  def is_admin
-    unless current_user.admin
-      redirect_to root_path, notice: "Access Denied"
-    end
-  end
   def index
     @memberships = current_user.memberships
 
@@ -47,6 +41,7 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     @membership = Membership.new(params[:membership])
+    @membership.group_id = params[:id]
     respond_to do |format|
       if @membership.save
         format.html { redirect_to group_path(@membership.group_id), notice: 'Membership was successfully created.' }

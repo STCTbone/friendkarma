@@ -1,0 +1,22 @@
+<h1><%= current_user.username %>'s Groups</h1>
+
+
+
+
+  <% @groups.each do |group| %>
+    <ul><b><%= link_to group.name, group %></b>
+      <b>Members:</b>
+       <% group.users.each do |groupuser| %>
+          <li>
+            <a><%= groupuser.username %>. </a>
+          </li>
+          <% end %>
+
+<br />
+</ul>
+<% end %>
+
+<br />
+
+<%= link_to 'New Group', new_group_path %>
+
