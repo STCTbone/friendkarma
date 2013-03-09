@@ -6,10 +6,20 @@ class Job < ActiveRecord::Base
   has_many :comments
 
   validates_presence_of :friend_karma_value, :group_id, :membership_id, :name, :time
-  def complete(user)
+  def completed
    requests = Request.where(group_id)
     requests.each do |request|
       request.completed = true  
     end
+  end
+
+  def is_complete?
+    complete = false
+    self.requests.each do |request|
+      if request.complete == false
+        complete = false
+      end
+    end
+    return complete
   end
 end

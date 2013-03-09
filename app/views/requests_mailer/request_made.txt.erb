@@ -1,0 +1,8 @@
+<%= @user.first %> <%= @user.last> has made a request on your job! The details are below:
+
+Job: <%=@job.name%>
+Time: <%=@job.time%>
+Request: <%=@request.request_text%>
+
+<%= link_to "Leave a comment on this request", new_comment_path(job_id: @job.id)%>
+<%= link_to "View that job", job_path(@job.id)%>
