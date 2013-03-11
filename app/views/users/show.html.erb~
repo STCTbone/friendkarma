@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= image_tag(@user.avatar)%>
+<%= image_tag("#{@user.avatar.url}")%>
 <p>
   <b>Username:</b>
   <%= @user.username %>
