@@ -1,0 +1,2 @@
+module SmsReceiveHelper
+end
