@@ -1,5 +1,9 @@
 FriendKarma::Application.routes.draw do
 
+  get "oauths/oauth"
+
+  get "oauths/callback"
+
   resources :password_resets
 
   root to: 'user_sessions#new'
@@ -20,6 +24,7 @@ FriendKarma::Application.routes.draw do
   resources :jobs
 
   get "/jobs/:id/complete" => 'jobs#completed_job', as: :completed_job
+  get "/jobs/:id/accepted" => 'jobs#accepted', as: :job_accepted
   
   resources :groups
 
@@ -28,7 +33,7 @@ FriendKarma::Application.routes.draw do
   match 'login' => 'user_sessions#new', as: :login
   match 'logout' => 'user_sessions#destroy', as: :logout
 
-  post '/sms/' => 'sms_receive#index', as: :sms_receive
+#  post '/sms/' => 'sms_receive#index', as: :sms_receive
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

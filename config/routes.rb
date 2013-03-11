@@ -1,5 +1,9 @@
 FriendKarma::Application.routes.draw do
 
+  get "oauths/oauth"
+
+  get "oauths/callback"
+
   resources :password_resets
 
   root to: 'user_sessions#new'
@@ -28,6 +32,9 @@ FriendKarma::Application.routes.draw do
 
   match 'login' => 'user_sessions#new', as: :login
   match 'logout' => 'user_sessions#destroy', as: :logout
+  
+  match "oauth/callback" => "oauths#callback"
+  match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
 #  post '/sms/' => 'sms_receive#index', as: :sms_receive
 
