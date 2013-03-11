@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302032105) do
+ActiveRecord::Schema.define(:version => 20130311000820) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment_text"
@@ -35,6 +35,9 @@ ActiveRecord::Schema.define(:version => 20130302032105) do
     t.integer  "membership_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "asked"
+    t.boolean  "flaky"
+    t.boolean  "accepted"
   end
 
   create_table "memberships", :force => true do |t|
@@ -48,8 +51,9 @@ ActiveRecord::Schema.define(:version => 20130302032105) do
     t.integer  "job_id"
     t.integer  "membership_id"
     t.text     "request_text"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.boolean  "completed",     :default => false
   end
 
   create_table "users", :force => true do |t|

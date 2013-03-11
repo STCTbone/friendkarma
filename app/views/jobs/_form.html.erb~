@@ -31,8 +31,7 @@
   </div>
 
   <div class="field">
-    <%= f.label "Do you want someone else to do this for you?" %>
-    <%= f.check_box :asked %>
+    <%= f.check_box "Do you want someone else to do this for you?",:asked %>
   </div>
   <div class="actions">
     <%= f.submit %>
