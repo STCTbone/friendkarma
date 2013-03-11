@@ -113,8 +113,9 @@ Rails.application.config.sorcery.configure do |config|
    config.facebook.key = "194648497326062"
    config.facebook.secret = "232be3910c14fa2261365cc0a7d51de4"
    config.facebook.callback_url = "http://friendkarma.herokuapp.com/jobs"
-   config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username", :hometown => "hometown/name"}
-   config.facebook.access_permissions = "email,offline_access,user_hometown"
+   config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username" }
+   config.facebook.scope = "email,offline_access,user_hometown,user_interests,user_likes"
+   config.facebook.display = "popup"
   #
   # config.github.key = ""
   # config.github.secret = ""

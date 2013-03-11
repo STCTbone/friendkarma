@@ -81,7 +81,7 @@ Rails.application.config.sorcery.configure do |config|
   # What providers are supported by this app, i.e. [:twitter, :facebook, :github, :google, :liveid] .
   # Default: `[]`
   #
-  # config.external_providers = [:twitter, :facebook]
+   config.external_providers = [:twitter, :facebook]
 
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
@@ -105,16 +105,17 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter wil not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  # config.twitter.key = "j7zNlIg5Vbt66DBUDyUw"
-  # config.twitter.secret = "7eObgIB2iL18FBcPHpVQOjgz8TNyZ0klzw1WpftpPA"
-  # config.twitter.callback_url ="http://friendkarma.herokuapp.com/jobs"
-  # config.twitter.user_info_mapping = {:username => "screen_name" }
+   config.twitter.key = "j7zNlIg5Vbt66DBUDyUw"
+   config.twitter.secret = "7eObgIB2iL18FBcPHpVQOjgz8TNyZ0klzw1WpftpPA"
+   config.twitter.callback_url ="http://friendkarma.herokuapp.com/jobs"
+   config.twitter.user_info_mapping = {:username => "screen_name" }
   #
-  # config.facebook.key = "194648497326062"
-  # config.facebook.secret = "232be3910c14fa2261365cc0a7d51de4"
-  # config.facebook.callback_url = "http://friendkarma.herokuapp.com/jobs"
-  # config.facebook.user_info_mapping = {:email => "name"}
-  # config.facebook.access_permissions = ["email", "publish_stream"]
+   config.facebook.key = "194648497326062"
+   config.facebook.secret = "232be3910c14fa2261365cc0a7d51de4"
+   config.facebook.callback_url = "http://friendkarma.herokuapp.com/jobs"
+   config.facebook.user_info_mapping = {:email => "email", :name => "name", :username => "username" }
+   config.facebook.scope = "email"
+   config.facebook.display = "popup"
   #
   # config.github.key = ""
   # config.github.secret = ""
