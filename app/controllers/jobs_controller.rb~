@@ -111,6 +111,6 @@ class JobsController < ApplicationController
       job = Job.find(Request.find_by_id(params[:id]).job.id)
       job.completed 
 
-      render jobs_path, notice: "Job completed!"
+      redirect_to jobs_url, notice: "Job completed!"
     end
 end
