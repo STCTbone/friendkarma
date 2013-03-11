@@ -1,6 +1,7 @@
 FriendKarma::Application.routes.draw do
 
   get "oauths/oauth"
+  get "/dashboard" => "dashboard#index", as: 'dashboard'
 
   get "oauths/callback"
 
