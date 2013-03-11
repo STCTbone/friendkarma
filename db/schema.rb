@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311000820) do
+ActiveRecord::Schema.define(:version => 20130311003840) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment_text"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(:version => 20130311000820) do
     t.boolean  "asked"
     t.boolean  "flaky"
     t.boolean  "accepted"
+    t.integer  "acceptor_id"
   end
 
   create_table "memberships", :force => true do |t|
@@ -79,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20130311000820) do
     t.string   "activation_state"
     t.string   "activation_token"
     t.datetime "activation_token_expires_at"
+    t.integer  "favors_done",                     :default => 0
+    t.integer  "favors_received",                 :default => 0
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"
