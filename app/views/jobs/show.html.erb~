@@ -26,6 +26,5 @@
 </p>
 
 <%= link_to 'Make a request', new_request_path(job_id:  @job.id)%>
-<%= link_to 'Make a comment', new_comment_path(job_id: @job.id)%>
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', jobs_path %>

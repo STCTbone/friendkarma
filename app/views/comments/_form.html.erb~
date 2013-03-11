@@ -15,7 +15,7 @@
     <%= f.label :comment_text %><br />
     <%= f.text_area :comment_text %>
   </div>
-  <div class="field">
+  <<div class="field>
     <%= hidden_field_tag :job_id, params[:job_id].to_i%>
   </div>
   <div class="actions">

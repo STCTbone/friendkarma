@@ -10,4 +10,10 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password, :message => "should match confirmation", :if => :password
 
   validates_uniqueness_of :email, :phone
+
+  has_many :memberships
+  has_many :jobs, through: :memberships
+  has_many :groups, through: :memberships
+  has_many :requests, through: :memberships
+  has_many :requests, through: :memberships
 end

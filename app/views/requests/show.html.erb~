@@ -15,7 +15,7 @@
   <%= @request.request_text %>
 </p>
 
-<%= link_to 'Job Complete!', completed_job_url %>
+<%= link_to 'Job Complete!', completed_job_path %>
 
 <%= link_to 'Edit', edit_request_path(@request) %> |
 <%= link_to 'Back', requests_path %>
