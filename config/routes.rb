@@ -20,6 +20,7 @@ FriendKarma::Application.routes.draw do
   resources :jobs
 
   get "/jobs/:id/complete" => 'jobs#completed_job', as: :completed_job
+  get "/jobs/:id/accepted" => 'jobs#accepted', as: :job_accepted
   
   resources :groups
 
