@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130311003840) do
+ActiveRecord::Schema.define(:version => 20130311200301) do
 
   create_table "comments", :force => true do |t|
     t.text     "comment_text"
@@ -58,12 +58,12 @@ ActiveRecord::Schema.define(:version => 20130311003840) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",                                       :null => false
+    t.string   "username",                                           :null => false
     t.string   "email"
     t.string   "crypted_password"
     t.string   "salt"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
     t.string   "first"
     t.string   "last"
     t.string   "phone"
@@ -82,6 +82,13 @@ ActiveRecord::Schema.define(:version => 20130311003840) do
     t.datetime "activation_token_expires_at"
     t.integer  "favors_done",                     :default => 0
     t.integer  "favors_received",                 :default => 0
+    t.boolean  "email_notifications",             :default => false
+    t.boolean  "text_notifications",              :default => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.string   "avatar"
   end
 
   add_index "users", ["activation_token"], :name => "index_users_on_activation_token"

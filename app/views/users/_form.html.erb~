@@ -41,7 +41,7 @@
   </div>
   <div class ="field">
      <%= image_tag(@user.avatar) if @user.avatar? %>
-     <%= f.file_field:avatar %>
+     <%= f.file_tag :avatar %>
   </div>
   <div class="actions">
     <%= f.submit %>

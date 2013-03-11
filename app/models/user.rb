@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   # attr_accessible :title, :body
-  attr_accessible :username, :email, :password, :password_confirmation, :first, :last, :phone, :friend_karma, :admin, :favors_done, :favors_received
+  mount_uploader :avatar, AvatarUploader
+  attr_accessible :username, :email, :password, :password_confirmation, :first, :last, :phone, :friend_karma, :admin, :favors_done, :favors_received, :avatar
 
   has_many :memberships
   has_many :groups, through: :memberships
