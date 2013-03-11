@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= hidden_field_tag :job_id, params[:job_id].to_i%>
+    <%= f.hidden_field :job_id%>
   </div>
   <div class="field">
     <%= f.hidden_field :membership_id %>

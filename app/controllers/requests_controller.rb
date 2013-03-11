@@ -42,8 +42,12 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(params[:request])
 
+    @request.job_id = params[:job_id]
+    @request.membership_id = current_user.memberships.where(group_id: @request.job.group.id).first.id
     respond_to do |format|
       if @request.save
+        RequestsMailer.request_made(current_user, @request.job, @request).deliver
+       SmsController.new.request_created(@request.job, @request)
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
@@ -60,6 +64,7 @@ class RequestsController < ApplicationController
 
     respond_to do |format|
       if @request.update_attributes(params[:request])
+        RequestsMailer.request_modified(current_user,@request.job,@request).deliver
         format.html { redirect_to @request, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
@@ -73,6 +78,7 @@ class RequestsController < ApplicationController
   # DELETE /requests/1.json
   def destroy
     @request = Request.find(params[:id])
+    RequestsMailer.request_deleted(current_user,@request.job,@request).deliver
     @request.destroy
 
     respond_to do |format|

@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  before_filter :is_user_or_admin, except: [:index, :new, :create]
+  before_filter :is_user_or_admin, except: [:index, :new, :create, :completed_job]
 
   def is_user_or_admin
     unless (current_user.id == Job.find_by_id(params[:id].to_i).membership.user.id ) || (current_user.admin)
@@ -15,7 +15,8 @@ class JobsController < ApplicationController
   end
 
   def index
-    @jobs = Job.all
+    user_jobs = current_user.jobs
+    @jobs = Job.where(id: current_user.jobs )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,9 +55,15 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(params[:job])
-
+    @job.friend_karma_value = 1
+    @job.membership_id = Membership.where("user_id = ? AND group_id = ?", current_user.id, @job.group).first.id
     respond_to do |format|
       if @job.save
+        @job.group.users.each do |user|
+          if user != current_user
+            JobsMailer.job_created(user, @job).deliver
+          end
+        end
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render json: @job, status: :created, location: @job }
       else
@@ -87,10 +94,23 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-
-    respond_to do |format|
-      format.html { redirect_to jobs_url }
-      format.json { head :no_content }
-    end
+    @job.requests.each do |request|
+      user = request.user
+      
+      if user != current_user
+        JobsMailer.job_completed(user, @job).deliver
+      end
+      respond_to do |format|
+        format.html { redirect_to jobs_url }
+        format.json { head :no_content }
+      end
   end
+  end
+
+    def completed_job
+      job = Job.find(Request.find_by_id(params[:id]).job.id)
+      job.completed 
+
+      redirect_to jobs_url, notice: "Job completed!"
+    end
 end

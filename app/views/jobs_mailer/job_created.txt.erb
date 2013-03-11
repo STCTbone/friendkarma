@@ -1,0 +1,11 @@
+New Job Created!
+================
+
+
+<%= user.name %> has created a new job: need anything?
+
+Job: <%= @job.name %>
+Time: <%= @job.time %>
+
+If you need anything, please follow this link:
+<%= link_to "Request", new_request_path%>

@@ -16,9 +16,9 @@
   <tr>
     <td><%= job.name %></td>
     <td><%= job.friend_karma_value %></td>
-    <td><%= job.time %></td>
-    <td><%= job.group_id %></td>
-    <td><%= job.membership_id %></td>
+    <td><%= job.time.strftime("%B %e: %l:%M %P %Z") %></td>
+    <td><%= job.group.name %></td>
+    <td><%= job.membership.user.first %> <%= job.membership.user.last %></td>
     <td><%= link_to 'Show', job %></td>
     <td><%= link_to 'Edit', edit_job_path(job) %></td>
     <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>

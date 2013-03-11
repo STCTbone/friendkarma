@@ -46,7 +46,8 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(params[:comment])
-
+    @comment.job_id = params[:job_id]
+    @comment.membership_id = current_user.memberships.where(group_id: @comment.job.group.id).first.id
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
