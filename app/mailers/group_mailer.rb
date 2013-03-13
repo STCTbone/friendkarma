@@ -5,6 +5,7 @@ class GroupMailer < ActionMailer::Base
     @invitor = invitor
     @invitee_email = invitee_email
     @group = group
+    @user = current_user
     mail(to: invitee_email, subject: "FriendKarma - #{invitor.first}, #{invitor.last}  has invited you to join the group: #{group.name}!")
   end
 

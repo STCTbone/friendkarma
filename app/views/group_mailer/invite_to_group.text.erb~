@@ -3,7 +3,7 @@ Group Invitation!
 
 Hello!
 
-<%= @invitor.first %> has invited you to the group: <%= group.name %>!
+<%= @invitor.first %> has invited you to the group: <%= @group.name %>!
 
 To join this group , please follow this link and accept the inviatation:
 <%= link_to "Join Group", memberships_path(user_id: current_user.id, group_id:  @group.id ), method: 'post' %>
