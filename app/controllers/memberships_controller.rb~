@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
   # GET /memberships
   # GET /memberships.json
-  before_filter :is_admin
+  before_filter :is_admin, except: [:create]
   def is_admin
     unless current_user.admin
       redirect_to root_path, notice: "Access Denied"
@@ -52,7 +52,7 @@ class MembershipsController < ApplicationController
         format.html { redirect_to group_path(@membership.group_id), notice: 'Membership was successfully created.' }
         format.json { render json: @membership, status: :created, location: @membership }
       else
-        format.html { render action: "new" }
+        format.html { render action: root_path}
         format.json { render json: @membership.errors, status: :unprocessable_entity }
       end
     end
