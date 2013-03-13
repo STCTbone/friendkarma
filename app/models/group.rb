@@ -5,6 +5,7 @@ class Group < ActiveRecord::Base
   has_many :jobs
   has_many :requests, through: :jobs
   has_many :comments, through: :jobs
+  has_and_belongs_to_many :invitations
 
   validates_presence_of :name
 end

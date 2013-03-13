@@ -1,0 +1,17 @@
+<h1>Listing invitations</h1>
+
+<table>
+  <tr>
+    <th>Group</th>
+    <th>Invitee email</th>
+  </tr>
+
+<% @invitations.each do |invitation| %>
+  <tr>
+    <td><%= invitation.group.name %></td>
+    <td><%= invitation.invitee_email %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
