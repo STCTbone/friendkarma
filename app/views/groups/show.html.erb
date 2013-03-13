@@ -51,13 +51,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :group_id %>
+    <%= f.hidden_field :group_id, :value => @group.id %>
   </div>
   <div class="field">
-    <%= f.hidden_field :invitor_id %>
+    <%= f.hidden_field :invitor_id, :value => current_user.id %>
   </div>
   <div class="field">
-    <%= f.hidden_field :invitee_id %>
+    <%= f.hidden_field :invitee_id, :value => nil %>
   </div>
   <div class="field">
     <%= f.label :invitee_email %><br />
