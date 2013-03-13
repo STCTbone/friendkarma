@@ -13,6 +13,8 @@ group :production do
   gem 'pg'
 end
 
+gem 'mandrill-api'
+
 gem 'sorcery'
 gem 'twilio-ruby'
 gem 'carrierwave'
