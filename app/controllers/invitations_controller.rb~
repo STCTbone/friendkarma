@@ -44,10 +44,10 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(params[:invitation])
     @invitation.group_id = params[:invitation][:group_id]
     group = Group.find_by_id(params[:invitation][:group_id])
-    invitor = current_user
+
     respond_to do |format|
       if @invitation.save
-        GroupMailer.invite_to_group(invitor, @invitation.invitee_email, group).deliver
+        GroupMailer.invite_to_group(current_user, @invitation.invitee_email, group).deliver
 
         format.html { redirect_to group_path(@invitation.group), notice: 'Invitation was successfully created.' }
         format.json { render json: @invitation, status: :created, location: @invitation }
