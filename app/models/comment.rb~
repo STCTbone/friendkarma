@@ -1,6 +1,4 @@
 class Comment < ActiveRecord::Base
-  include PublicActivity::Model
-  tracked
   attr_accessible :comment_text, :job_id, :membership_id
 
   belongs_to :job
