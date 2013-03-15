@@ -1,5 +1,8 @@
 FriendKarma::Application.routes.draw do
 
+  resources :invitations
+
+
   get "oauths/oauth"
   get "/dashboard" => "dashboard#index", as: 'dashboard'
 
