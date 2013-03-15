@@ -142,9 +142,9 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 3.2.1)
   jquery-rails
-  public_activity
   mandrill-api
   pg
+  public_activity
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sorcery

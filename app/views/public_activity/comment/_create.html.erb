@@ -1,12 +1,9 @@
-<% activity.comment.each do |activity| %>
-  <div class="request">
+  <div class="comment">
     <ul>
-      <li><%=  activity.comment.owner.name %></li>
-      <li><%=  activity.comment.friend_karma_value %></li>
-      <li><%=  activity.comment.time %></li>
-      <li><%=  activity.comment.group_id %></li>
-      <li><%=  activity.comment.membership_id %></li>
-    <% end %>
+      <li>Comment: <%=  activity.trackable.comment_text %></li>
+      <li>Job Name: <%=  activity.trackable.job.name %></li>
+      <li>From: <%=  activity.owner.username %></li>
     </ul>
   </div>
-<% end %>
+
+

@@ -48,7 +48,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.save
         RequestsMailer.request_made(current_user, @request.job, @request).deliver
-       SmsController.new.request_created(@request.job, @request)
+       # SmsController.new.request_created(@request.job, @request)
         format.html { redirect_to @request, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
