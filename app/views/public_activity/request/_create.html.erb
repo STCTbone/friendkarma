@@ -1,0 +1,12 @@
+<% @activity.request.each do |activity| %>
+  <div class="request">
+    <ul>
+      <li><%=  activity.request.job_id %></li>
+      <li><%=  activity.request.owner.name %></li>
+      <li><%=  activity.request.time %></li>
+      <li><%=  activity.request.group_id %></li>
+      <li><%=  activity.request.request_text %></li>
+  <% end %>
+    </ul>
+  </div>
+<% end %>

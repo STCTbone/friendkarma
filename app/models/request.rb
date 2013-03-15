@@ -1,6 +1,6 @@
 class Request < ActiveRecord::Base
   include PublicActivity::Model
-  tracked
+  tracked owner: ->(controller, model) { controller && controller.current_user}
   attr_accessible :job_id, :request_text, :membership_id
 
   belongs_to :job

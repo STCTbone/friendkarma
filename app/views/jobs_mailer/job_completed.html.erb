@@ -1,0 +1,14 @@
+<! DOCTYPE html>
+  <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+      <h1>Job Completed</h1>
+      <p>Congratulations <%= @user.first%>,</p>
+      <p>Your job has been marked completed by all your requesters!</p>
+      <p>Job: <%= @job.name%></p>
+      <p>Time: <%= @job.time%></p>
+      <p><%= "Back to FriendKarma", root_path%></p>
+    </body>
+  </html>

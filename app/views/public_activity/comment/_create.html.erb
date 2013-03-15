@@ -1,0 +1,12 @@
+<% activity.comment.each do |activity| %>
+  <div class="request">
+    <ul>
+      <li><%=  activity.comment.owner.name %></li>
+      <li><%=  activity.comment.friend_karma_value %></li>
+      <li><%=  activity.comment.time %></li>
+      <li><%=  activity.comment.group_id %></li>
+      <li><%=  activity.comment.membership_id %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

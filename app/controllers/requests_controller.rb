@@ -1,4 +1,5 @@
 class RequestsController < ApplicationController
+
   # GET /requests
   # GET /requests.json
   def index

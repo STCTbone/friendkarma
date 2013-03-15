@@ -1,6 +1,7 @@
 class Job < ActiveRecord::Base
   include PublicActivity::Model
-  tracked
+  tracked owner: ->(controller, model) { controller && controller.current_user}
+
   attr_accessible :friend_karma_value, :group_id, :membership_id, :name, :time, :asked, :accepted, :flaky
   belongs_to :group
   belongs_to :membership
@@ -11,7 +12,7 @@ class Job < ActiveRecord::Base
   def completed
    requests = Request.where(group_id)
     requests.each do |request|
-      request.completed = true  
+      request.completed = true
     end
   end
 
