@@ -1,36 +1,55 @@
-<div class="container palette-warning profile-section-fk">
+<div class="container-fluid palette-warning profile_section_fk">
 <!-- profile-fk stands for profile friendkarma, i will use this to semantically markup areas that I might need to individually style later, this will continue throughout this file with the -fk nomenclature -->
-	<div class="container">
+	<div class="container-fluid">
+		<br/>
 		<div class="span4 center">
 			<%= image_tag 'logo.png'%>
 		</div>
-		<hr />
+		<hr/>
 	</div>
-
-	<div class="row">
-		<div class="span10">
-			<div class="row profile-fk">
-				<div class="span3 offset1 palette-night">
-					<a class="btn offset2" href="#"><i class="icon-search icon-cog"><i></a>
-					<img src="..." class="img-rounded" alt="Avatar">
-				</div>
-				<div class="span5 offset1 palette-clouds">requester</div>
+	<div class="row-fluid">
+		<div class="span3 offset1 palette-night profile_fk">
+			<div class="row-fluid icon_fk">
+				<a class="btn offset9" href="#"><i class="icon-search icon-cog palette-clouds"></i></a>
 			</div>
+			<div class="row-fluid profile_content">
+				<img src="#" class="img-rounded profile_pic" alt="Avatar"/>
+				<h4>Shawna X.</h4>
+				<p>100 K-POINTS</p>
+			</div>
+		</div>
+		<div class="span5 offset1 palette-clouds request_fk">
+			<p>requester</p>
+		</div>
+	</div>
+	<br/>
+</div>
+
+<div class="container-fluid palette-night feed_section_fk">
+	<br/>
+	<div class="row-fluid">
+		<div class="span10 offset1">
+			<div class="row-fluid">
+				<div class="span4 feed_header_fk">
+					<h3>Karma Feed</h3>
+					<div class="btn-group">
+						<button class="btn">All</button>
+						<button class="btn">Requests</button>
+						<button class="btn">Offers</button>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<div class="row-fluid feed_filter_fk">
+				<div class="feed_filter_fake_content">
+					<p>Request 1</p>
+				</div>
+				<div class="feed_filter_fake_content">
+					<p>Offer 1</p>
+				</div>
+			</div>
+		
 		</div>
 	</div>
 </div>
 
-<div class="container <!-- palette-night --> feed-section-fk">
-	<div class="row">
-		<div class="span10">
-			<div class="row">
-				<div class"button palette-warning-dark">
-					<h3>Can you help?</h3>
-				</div>
-				<div class"button palette-success">
-					<h3>I got this...</h3>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
