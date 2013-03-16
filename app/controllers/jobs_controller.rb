@@ -8,6 +8,8 @@ class JobsController < ApplicationController
     end
   end
 
+  hide_action :current_user
+
   def is_admin
     unless current_user.admin
       redirect_to root_path, notice: "Access Denied"
@@ -96,7 +98,7 @@ class JobsController < ApplicationController
     @job.destroy
     @job.requests.each do |request|
       user = request.user
-      
+
       if user != current_user
         JobsMailer.job_completed(user, @job).deliver
       end
@@ -109,7 +111,7 @@ class JobsController < ApplicationController
 
     def completed_job
       job = Job.find(Request.find_by_id(params[:id]).job.id)
-      job.completed 
+      job.completed
       user = job.membership.user
       if job.asked
         user.favors_received += 1

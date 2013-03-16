@@ -15,7 +15,7 @@
 			<div class="row-fluid profile_content">
 				<%= image_tag current_user.avatar, { class: "img-rounded profile_pic", alt: "Avatar"}%>
 				<h4><%= current_user.first%> <%= current_user.last%> </h4>
-				<p>100 K-POINTS</p>
+				<p><%= current_user.friend_karma %>  K-POINTS</p>
 			</div>
 		</div>
 		<div class="span5 offset1 palette-clouds request_fk">

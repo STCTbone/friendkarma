@@ -1,0 +1,14 @@
+<! DOCTYPE html>
+  <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+      <h1>Job Deleted</h1>
+      <p><%= @user.job %> has deleted the following job:</p>
+      <p>Job: <%= @job.name %></p>
+      <p>Time: <%= @job.time %></p>
+      <p>Still need something done? Start a new job!</p>
+      <p><%= link_to "New Job", new_job_path%></p>
+    </body>
+  </html>

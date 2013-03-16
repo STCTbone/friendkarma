@@ -1,0 +1,14 @@
+<! DOCTYPE html>
+  <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+      <h1>New Job Created!</h1>
+      <p><%= @user.username %> has created a new job: need anything?</p>
+      <p>Job: <%= @job.name %></p>
+      <p>Time: <%= @job.time %></p>
+      <p>If you need anything, please follow this link:</p>
+      <p><%= link_to "Request", new_request_path(job_id: @job.id)%></p>
+    </body>
+  </html>

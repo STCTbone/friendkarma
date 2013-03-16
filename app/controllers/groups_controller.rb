@@ -28,6 +28,9 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @membership = Membership.new
     @membership.group_id = params[:id]
+    @invitation = Invitation.new
+    @invitation.group_id = params[:id]
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @group }

@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+
   before_filter :is_user_or_admin, except: [:index, :new, :create]
 
   def is_user_or_admin

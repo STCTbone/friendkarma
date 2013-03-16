@@ -29,21 +29,21 @@
 </table>
 <br />
 
-<!-- Add New User Here -->
+<!-- Invite New User  -->
 
 <br />
 <br />
-<b>Add New User</b>
+<b>Invite New User</b>
 <br />
 <br />
 
-<%= form_for(@membership) do |f| %>
-  <% if @membership.errors.any? %>
+<%= form_for(@invitation) do |f| %>
+  <% if @invitation.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@membership.errors.count, "error") %> prohibited this membership from being saved:</h2>
+      <h2><%= pluralize(@invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
 
       <ul>
-      <% @membership.errors.full_messages.each do |msg| %>
+      <% @invitation.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -51,11 +51,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.collection_select :user_id, User.all, :id, :username %>
+    <%= f.hidden_field :group_id, :value => @group.id %>
   </div>
   <div class="field">
-    <%= f.hidden_field :group_id %>
+    <%= f.hidden_field :invitor_id, :value => current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :invitee_id, :value => nil %>
+  </div>
+  <div class="field">
+    <%= f.label :invitee_email %><br />
+    <%= f.text_field :invitee_email %>
   </div>
   <div class="actions">
     <%= f.submit %>
