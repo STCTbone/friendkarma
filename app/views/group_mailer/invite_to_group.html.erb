@@ -1,0 +1,14 @@
+<! DOCTYPE html>
+  <html>
+    <head>
+      <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+      <h1>Group Invitation</h1>
+      <p>Hello!</p>
+      <p><%= @invitor.first %> has invited you to the group: <%= @group.name %>!</p>
+      <p>To join this group , please follow this link and accept the inviatation:
+<%= link_to "Join Group", memberships_path(group_id: @group.id), method: 'post' %></p>
+    </body>
+  </html>
+

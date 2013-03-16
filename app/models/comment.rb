@@ -1,4 +1,7 @@
 class Comment < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user}
+
   attr_accessible :comment_text, :job_id, :membership_id
 
   belongs_to :job
