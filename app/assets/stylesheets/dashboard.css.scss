@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .profile_fk {
-	height: 200px;
+	height: auto;
 }
 
 .icon_fk {
@@ -19,7 +19,7 @@
 } 
 
 .request_fk {
-	height: 240px;
+	height: auto;
 }
 
 .feed_header_fk {
@@ -31,4 +31,8 @@
 
 .feed_filter_fake_content {
 	background-color: lightgrey;
+}
+
+#textbox_fk {
+	height: 6em;
 }
