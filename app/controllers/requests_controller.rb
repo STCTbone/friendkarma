@@ -87,4 +87,16 @@ class RequestsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    def accepted
+      request = Request.find(params[:id])
+      request.acceptor_id = current_user.id
+
+      request.save
+
+      redirect_to jobs_url, notice: "Request accepted!"
+    end
+
+
+
 end

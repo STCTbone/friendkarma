@@ -25,4 +25,5 @@ class Job < ActiveRecord::Base
     end
     return complete
   end
+  # self.requests.all? { |request| request.complete }
 end

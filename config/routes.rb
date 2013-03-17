@@ -25,18 +25,21 @@ FriendKarma::Application.routes.draw do
 
   resources :requests
 
+  get "/requests/:id/complete" => 'requests#completed_job', as: :completed_request
+  get "/requests/:id/accepted" => 'requests#accepted', as: :request_accepted
+
   resources :jobs
 
   get "/jobs/:id/complete" => 'jobs#completed_job', as: :completed_job
   get "/jobs/:id/accepted" => 'jobs#accepted', as: :job_accepted
-  
+
   resources :groups
 
   resources :user_sessions
 
   match 'login' => 'user_sessions#new', as: :login
   match 'logout' => 'user_sessions#destroy', as: :logout
-  
+
   match "oauth/callback" => "oauths#callback"
   match "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 

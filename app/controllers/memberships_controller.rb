@@ -47,7 +47,7 @@ class MembershipsController < ApplicationController
   # POST /memberships.json
   def create
     @membership = Membership.new
-    @membership.user_id = current_user
+    @membership.user_id = current_user.id
     @membership.group_id = params[:group_id]
     respond_to do |format|
       if @membership.save

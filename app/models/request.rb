@@ -7,4 +7,9 @@ class Request < ActiveRecord::Base
   belongs_to :membership
 
   validates_presence_of :job_id, :request_text, :membership_id
+
+  def accepted?
+    acceptor_id.present?
+  end
+
 end

@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 
-  before_filter :is_user_or_admin, except: [:index, :new, :create, :completed_job]
+  before_filter :is_user_or_admin, except: [:index, :new, :create, :completed_job, :accepted]
 
   def is_user_or_admin
     unless (current_user.id == Job.find_by_id(params[:id].to_i).membership.user.id ) || (current_user.admin)
@@ -131,8 +131,10 @@ class JobsController < ApplicationController
     end
 
     def accepted
-      job = Job.find(Request.find_by_id(params[:id]).job.id)
+      job = Job.find(params[:id])
       job.acceptor_id = current_user.id
+      job.accepted = true
+
       job.save
 
       redirect_to jobs_url, notice: "Job accepted!"
