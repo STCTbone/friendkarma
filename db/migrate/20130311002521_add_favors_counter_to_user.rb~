@@ -1,6 +1,0 @@
-class AddFavorsCounterToUser < ActiveRecord::Migration
-  def change
-    add_column :users, :favors_done, :integer
-    add_column :users, :favors_received, :integer
-  end
-end

@@ -49,7 +49,7 @@ class RequestsController < ApplicationController
       if @request.save
         RequestsMailer.request_made(current_user, @request.job, @request).deliver
        # SmsController.new.request_created(@request.job, @request)
-        format.html { redirect_to @request, notice: 'Request was successfully created.' }
+        format.html { redirect_to dashboard_url, notice: 'Request was successfully created.' }
         format.json { render json: @request, status: :created, location: @request }
       else
         format.html { render action: "new" }
@@ -66,7 +66,7 @@ class RequestsController < ApplicationController
     respond_to do |format|
       if @request.update_attributes(params[:request])
         RequestsMailer.request_modified(current_user,@request.job,@request).deliver
-        format.html { redirect_to @request, notice: 'Request was successfully updated.' }
+        format.html { redirect_to dashboard_url, notice: 'Request was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,11 +79,11 @@ class RequestsController < ApplicationController
   # DELETE /requests/1.json
   def destroy
     @request = Request.find(params[:id])
-    RequestsMailer.request_deleted(current_user,@request.job,@request).deliver
+    RequestsMailer.request_deleted(current_user, @request.job, @request).deliver
     @request.destroy
 
     respond_to do |format|
-      format.html { redirect_to requests_url }
+      format.html { redirect_to dashboard_url }
       format.json { head :no_content }
     end
   end
@@ -94,7 +94,7 @@ class RequestsController < ApplicationController
 
       request.save
 
-      redirect_to jobs_url, notice: "Request accepted!"
+      redirect_to dashboard_url, notice: "Request accepted!"
     end
 
         def completed_job
@@ -115,7 +115,7 @@ class RequestsController < ApplicationController
           user.save
         end
       end
-      redirect_to jobs_url, notice: "Job completed!"
+      redirect_to dashboard_url, notice: "Job completed!"
     end
 
 end

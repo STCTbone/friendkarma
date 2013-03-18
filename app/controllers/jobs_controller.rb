@@ -66,7 +66,7 @@ class JobsController < ApplicationController
             JobsMailer.job_created(user, @job).deliver
           end
         end
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.html { redirect_to dashboard_url, notice: 'Job was successfully created.' }
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html { render action: "new" }
@@ -82,7 +82,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to dashboard_url, notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -96,17 +96,16 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-    @job.requests.each do |request|
-      user = request.user
-
-      if user != current_user
-        JobsMailer.job_completed(user, @job).deliver
-      end
+    # @job.requests.each do |request|
+    #   user = request.user
+    #     if user != current_user
+    #       JobsMailer.job_completed(user, @job).deliver
+    #     end
+    # end
       respond_to do |format|
-        format.html { redirect_to jobs_url }
+        format.html { redirect_to dashboard_url }
         format.json { head :no_content }
       end
-  end
   end
 
     def completed_job
@@ -127,7 +126,7 @@ class JobsController < ApplicationController
           user.save
         end
       end
-      redirect_to jobs_url, notice: "Job completed!"
+      redirect_to dashboard_url, notice: "Job completed!"
     end
 
     def accepted
@@ -137,6 +136,6 @@ class JobsController < ApplicationController
 
       job.save
 
-      redirect_to jobs_url, notice: "Job accepted!"
+      redirect_to dashboard_url, notice: "Job accepted!"
     end
 end

@@ -1,6 +1,6 @@
-Dear <%=@job.user.first%>,
+Dear <%= @job.membership.user.first%>,
 
-<%= @user.first%> <%=@user.last> has deleted their request for your job <%= @job.name%>. The request was:
+<%= @user.first%> <%= @user.last %> has deleted their request for your job <%= @job.name %>. The request was:
 
 <%= @request.request_text%>
 
