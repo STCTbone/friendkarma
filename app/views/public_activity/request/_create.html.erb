@@ -3,8 +3,9 @@
       <li>Job Name: <%=  activity.trackable.job.name %></li>
       <li>Request: <%=  activity.trackable.request_text %></li>
       <li>From: <%=  activity.owner.username %></li>
+      <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%></li>
       <% if current_user.id == activity.trackable.membership.user.id%>
-      <li><%= link_to 'Request Completed', completed_request_path(activity.trackable)%></li> |
+      <li><%= link_to 'Request Completed', completed_request_path(activity.trackable)%></li>
       <% elsif ! activity.trackable.accepted? %>
       <li><%= link_to 'Accept Request', request_accepted_path(activity.trackable)%></li>
       <% end %>

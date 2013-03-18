@@ -4,7 +4,7 @@
       <li>Request: <%=  activity.trackable.request_text %></li>
       <li>From: <%=  activity.owner.username %></li>
       <% if current_user.id == activity.trackable.membership.user.id%>
-      <li><%= link_to 'Request Completed', completed_request_path(activity.trackable)%></li> |
+      <li><%= link_to 'Request Completed', completed_request_path(activity.trackable)%></li>
       <% elsif ! activity.trackable.accepted? %>
       <% end %>
 
