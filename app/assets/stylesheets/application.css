@@ -11,8 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
 div.center {
-       float: none;
-      margin-left: auto;
-       margin-right: auto; }
-         
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+}
+    
