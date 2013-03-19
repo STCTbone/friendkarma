@@ -4,6 +4,7 @@
       <li>From: <%=  activity.owner.username %></li>
       <li>Friend Karma Value: <%=  activity.trackable.friend_karma_value %></li>
       <li>Date Time: <%=  activity.trackable.time %></li>
+      <li>Completed: <%= activity.trackable.completed%> </li>
       <% if current_user.id != activity.trackable.membership.user.id && !activity.trackable.asked %>
      <li><%= link_to 'Make a request', new_request_path(job_id:  activity.trackable.id)%></li>
      <% end %>
