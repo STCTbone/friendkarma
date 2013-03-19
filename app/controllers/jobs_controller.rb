@@ -1,14 +1,12 @@
 class JobsController < ApplicationController
 
-  before_filter :is_user_or_admin, except: [:index, :new, :create, :completed_job, :accepted]
+  before_filter :is_user_or_admin, except: [:index, :new, :create, :completed_job]
 
   def is_user_or_admin
     unless (current_user.id == Job.find_by_id(params[:id].to_i).membership.user.id ) || (current_user.admin)
       redirect_to root_path, notice: "Access Denied"
     end
   end
-
-  hide_action :current_user
 
   def is_admin
     unless current_user.admin
@@ -57,7 +55,7 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(params[:job])
-    @job.friend_karma_value = 100
+    @job.friend_karma_value = 1
     @job.membership_id = Membership.where("user_id = ? AND group_id = ?", current_user.id, @job.group).first.id
     respond_to do |format|
       if @job.save
@@ -96,12 +94,13 @@ class JobsController < ApplicationController
   def destroy
     @job = Job.find(params[:id])
     @job.destroy
-    # @job.requests.each do |request|
-    #   user = request.user
-    #     if user != current_user
-    #       JobsMailer.job_completed(user, @job).deliver
-    #     end
-    # end
+    @job.requests.each do |request|
+      user = request.user
+
+      if user != current_user
+        JobsMailer.job_completed(user, @job).deliver
+      end
+
       respond_to do |format|
         format.html { redirect_to dashboard_url }
         format.json { head :no_content }
@@ -109,22 +108,14 @@ class JobsController < ApplicationController
   end
 
     def completed_job
-      job = Job.find(Request.find_by_id(params[:id]).job.id)
-      job.completed
-      user = job.membership.user
-      if job.asked
-        user.favors_received += 1
-        user.save
-        user = User.find_by_id(job.acceptor_id)
-        user.favors_done += 1
-        user.save
-      else
-        user.favors_done += job.requests.count
-        job.requests.each do |request|
-          user = request.membership.user
-          user.favors_received += 1
-          user.save
-        end
+      job = Job.find(params[:id])
+      job.completed = true
+  job.save
+      if job.acceptor_id
+  acceptor = User.find(job.acceptor_id)
+  acceptor.favors_done += 1
+  acceptor.save
+  job.user.favors_received += 1
       end
       redirect_to dashboard_url, notice: "Job completed!"
     end

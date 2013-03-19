@@ -9,6 +9,7 @@
       <li>Friend Karma Value: <%=  activity.trackable.friend_karma_value %></li>
       <li>Date Time: <%=  activity.trackable.time %></li>
 
+
       <% if current_user.id == activity.owner.id %>
         <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%> |
                 <%= link_to 'Destroy', job_path(activity.trackable.id), method: :delete %></li>
@@ -20,6 +21,14 @@
       <% elsif activity.trackable.asked && !activity.trackable.accepted %>
         <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%> |
                 <%= link_to 'Accept Job', job_accepted_path(activity.trackable)%></li>
+
+      <li>Completed: <%= activity.trackable.completed%> </li>
+      <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%></li>
+      <% if current_user.id == activity.trackable.membership.user.id%>
+      <li><%= link_to 'Job Completed',completed_job_path(activity.trackable)%></li> |
+      <% elsif activity.trackable.asked && !activity.trackable.accepted %>
+      <li><%= link_to 'Accept Job', job_accepted_path(activity.trackable)%></li>
+
       <% end %>
 
     </ul>

@@ -97,25 +97,20 @@ class RequestsController < ApplicationController
       redirect_to dashboard_url, notice: "Request accepted!"
     end
 
-        def completed_job
-      job = Job.find(Request.find_by_id(params[:id]).job.id)
-      job.completed
-      user = job.membership.user
-      if job.asked
-        user.favors_received += 1
-        user.save
-        user = User.find_by_id(job.acceptor_id)
-        user.favors_done += 1
-        user.save
-      else
-        user.favors_done += job.requests.count
-        job.requests.each do |request|
-          user = request.membership.user
-          user.favors_received += 1
-          user.save
-        end
-      end
-      redirect_to dashboard_url, notice: "Job completed!"
-    end
+
+	def completed_request
+		request = Request.find(params[:id])
+		request_owner = request.user
+		request_owner.favors_received += 1
+		request_owner.save
+		request_doer = request.job.user
+		request_doer.favors_done += 1
+		request_doer.save
+		request.completed = true
+		request.save
+
+		redirect_to dashboard_url, notice: "Request completed!"
+	end
+>>>>>>> 2182a801a3537d497d28448810b2c559fb22e108
 
 end
