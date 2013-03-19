@@ -15,32 +15,34 @@
 			<a class="brand" href="#">friendkarma</a>
 			<ul class="nav pull-right">
 		   	 	<% if current_user %>
-				<li>
-			        | <b><%= current_user.username %></b> |
-			        <%= link_to "Profile", user_path(current_user.id) %> |
+				<li class="user_fk">
+			        <%= current_user.username %>
 				</li>
-				<li><a href="#">
-			        <%= link_to "Dashboard", dashboard_path %>|
-				</a></li>
-				<li><a href="#">
-			        <%= link_to "My Groups", groups_path %> |
-				</a></li>
-				<li><a href="#">
-			        <%= link_to "Jobs", jobs_path %> |
-				</a></li>
-				<li><a href="#">	
-			        <%= link_to "Requests", requests_path %> |
-				</a></li>
-				<li><a href="#">
-			        <%= link_to "Logout", :logout %> |
-				</a></li>
+				<li>
+			        <%= link_to "Profile", user_path(current_user.id) %>
+				</li>
+				<li>
+			        <%= link_to "Dashboard", dashboard_path %>
+				</li>
+				<li>
+			        <%= link_to "My Groups", groups_path %>
+				</li>
+				<li>
+			        <%= link_to "Jobs", jobs_path %>
+				</li>
+				<li>	
+			        <%= link_to "Requests", requests_path %>
+				</li>
+				<li>
+			        <%= link_to "Logout", :logout %>
+				</li>
 			    <% else %>
-				<li><a href="#">
+				<li>
 			    	<%= link_to "Register", new_user_path %>
-				</a></li>
-				<li><a href="#">
+				</li>
+				<li>
 			        <%= link_to "Login", :login %>
-				</a></li>
+				</li>
 			    <% end %>
 			</ul>
 		</div>
