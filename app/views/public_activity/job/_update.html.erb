@@ -24,7 +24,7 @@
 
       <li>Completed: <%= activity.trackable.completed%> </li>
       <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%></li>
-      <% if current_user.id == activity.trackable.membership.user.id%>
+      <% elsif current_user.id == activity.trackable.membership.user.id%>
       <li><%= link_to 'Job Completed',completed_job_path(activity.trackable)%></li> |
       <% elsif activity.trackable.asked && !activity.trackable.accepted %>
       <li><%= link_to 'Accept Job', job_accepted_path(activity.trackable)%></li>
