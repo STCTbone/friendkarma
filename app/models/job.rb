@@ -9,6 +9,7 @@ class Job < ActiveRecord::Base
   has_many :comments
 
   validates_presence_of :friend_karma_value, :group_id, :membership_id, :name, :time
+
   def completed
    requests = Request.where(group_id)
     requests.each do |request|

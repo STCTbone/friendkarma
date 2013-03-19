@@ -1,22 +1,26 @@
   <div class="request">
     <ul>
-      <li>Job Name: <%=  activity.trackable.job.name %></li>
+      <li>Job Offer: <%=  activity.trackable.job.membership.user.username %> : <%=  activity.trackable.job.name %></li>
 
-      <li>Request: <%=  activity.trackable.request_text %></li>
+      <li>Request: <%=  activity.trackable.membership.user.username %> responded: <%=  activity.trackable.request_text %></li>
 
-      <li>From: <%=  activity.owner.username %></li>
+      <li><b><%=  activity.owner.username %> accepted the request!</b></li>
+
+      <% if current_user.id == activity.owner.id %>
+
+      <li><%= link_to 'Delete', request_path(activity.trackable.id), method: :delete %></li>
+
+      <% end %>
 
       <% if current_user.id == activity.trackable.membership.user.id%>
 
       <li><%= link_to 'Request Completed', completed_request_path(activity.trackable)%></li>
 
-      <% elsif ! activity.trackable.accepted? %>
+      <% elsif !activity.trackable.accepted? %>
 
       <li><%= link_to 'Accept Request', request_accepted_path(activity.trackable)%></li>
 
       <% end %>
-
-      <li><%= link_to 'Destroy', request_path(activity.trackable.id), method: :delete %></li>
 
     </ul>
   </div>

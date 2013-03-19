@@ -1,28 +1,26 @@
  <div class="job">
     <ul>
-      <li>Job Name: <%=  activity.trackable.name %></li>
-
-      <li>From: <%=  activity.trackable.membership.user.username %></li>
-
-      <li>Updated by: <%=  activity.owner.username %></li>
-
+      <% if activity.trackable.asked %>
+          <li>Job Request: <%=  activity.trackable.membership.user.username %> : <%=  activity.trackable.name %></li>
+      <% else %>
+          <li>Job Offer: <%=  activity.trackable.job.user.username %> : <%=  activity.trackable.job.name %></li>
+      <% end %>
+      <li><b><%=  activity.owner.username %> has accepted the request!</b></li>
       <li>Friend Karma Value: <%=  activity.trackable.friend_karma_value %></li>
-
       <li>Date Time: <%=  activity.trackable.time %></li>
 
-      <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%></li>
+      <% if current_user.id == activity.owner.id %>
+        <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%> |
+                <%= link_to 'Destroy', job_path(activity.trackable.id), method: :delete %></li>
 
-      <% if current_user.id == activity.trackable.membership.user.id%>
+      <% elsif current_user.id == activity.trackable.membership.user.id %>
+        <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%> |
+                <%= link_to 'Job Completed', completed_job_path(activity.trackable)%></li>
 
-      <li><%= link_to 'Job Completed',completed_job_path(activity.trackable)%></li> |
-
-      <% elsif activity.trackable.asked && ! activity.trackable.accepted %>
-
-      <li><%= link_to 'Accept Job', job_accepted_path(activity.trackable)%></li>
-
+      <% elsif activity.trackable.asked && !activity.trackable.accepted %>
+        <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%> |
+                <%= link_to 'Accept Job', job_accepted_path(activity.trackable)%></li>
       <% end %>
-
-      <li><%= link_to 'Destroy', job_path(activity.trackable.id), method: :delete %></li>
 
     </ul>
   </div>
