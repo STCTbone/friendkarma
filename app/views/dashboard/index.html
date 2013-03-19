@@ -87,9 +87,9 @@
 				<div class="span4 feed_header_fk">
 					<h3>Karma Feed</h3>
 					<div class="btn-group">
-						<button class="btn">All</button>
-						<button class="btn">Requests</button>
-						<button class="btn">Offers</button>
+						<%= link_to "All",  dashboard_url ,{class: "btn"} %>
+						<%= link_to "Requests",  dashboard_url(filter: "Requests") ,{ class: "btn"} %>
+						<%= link_to "Offers",  dashboard_url(filter: "Offers") ,{ class: "btn"} %>
 					</div>
 				</div>
 			</div>
