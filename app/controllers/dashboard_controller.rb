@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
     @groups = current_user.groups
     if params[:filter] == "Requests"
     @activities = PublicActivity::Activity.order("created_at desc").where(trackable_type: "Request")
-    elsif params[:filter] == "Offers"
+    elsif params[:filter] == "Jobs"
     @activities = PublicActivity::Activity.order("created_at desc").where(trackable_type: "Job")
     else
     @activities = PublicActivity::Activity.order("created_at desc")

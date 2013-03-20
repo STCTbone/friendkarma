@@ -8,7 +8,7 @@
       <li>Friend Karma Value: <%=  activity.trackable.friend_karma_value %></li>
       <li>Date Time: <%=  activity.trackable.time %></li>
 
-      <li>Completed: <%= activity.trackable.completed %></li>
+      <li>Completed: <#%= activity.trackable.completed %></li>
 
       <% if current_user.id != activity.trackable.membership.user.id && !activity.trackable.asked %>
         <li><%= link_to 'Make a comment', new_comment_path(job_id: activity.trackable.id)%> |
