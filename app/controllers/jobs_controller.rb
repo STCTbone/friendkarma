@@ -55,8 +55,9 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(params[:job])
-    @job.friend_karma_value = 1
+    @job.friend_karma_value = 100
     @job.membership_id = Membership.where("user_id = ? AND group_id = ?", current_user.id, @job.group).first.id
+    @job.accepted = false
     respond_to do |format|
       if @job.save
         @job.group.users.each do |user|
