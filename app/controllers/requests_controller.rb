@@ -98,6 +98,7 @@ class RequestsController < ApplicationController
     end
 
 
+    # WAZZZZZUUPPP
 	def completed_request
 		request = Request.find(params[:id])
 		request_owner = request.user
