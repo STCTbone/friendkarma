@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(params[:user])
+    @user.friend_karma = 0
 
     respond_to do |format|
       if @user.save
