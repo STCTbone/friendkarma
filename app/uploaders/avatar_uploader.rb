@@ -6,6 +6,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
    include CarrierWave::MiniMagick
 
+   def default_url
+	#       "/images/fallback/" + [version_name, "default.png"].compact.join('_')
+	   "fallback/default.png/"
+	end
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   # include Sprockets::Helpers::RailsHelper
   # include Sprockets::Helpers::IsolatedHelper
