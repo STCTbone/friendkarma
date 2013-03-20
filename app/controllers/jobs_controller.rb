@@ -100,6 +100,7 @@ class JobsController < ApplicationController
       if user != current_user
         JobsMailer.job_completed(user, @job).deliver
       end
+    end
 
       respond_to do |format|
         format.html { redirect_to dashboard_url }
@@ -124,7 +125,6 @@ class JobsController < ApplicationController
       job = Job.find(params[:id])
       job.acceptor_id = current_user.id
       job.accepted = true
-
       job.save
 
       redirect_to dashboard_url, notice: "Job accepted!"

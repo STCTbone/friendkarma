@@ -1,15 +1,9 @@
   <div class="comment">
     <ul>
-
-      <li>Comment: <%=  activity.trackable.comment_text %></li>
-
+      <li><b>Comment: <%=  activity.owner.username %> : <%=  activity.trackable.comment_text %></b></li>
       <li>Job Name: <%=  activity.trackable.job.name %></li>
-
-      <li>From: <%=  activity.owner.username %></li>
-
-      <li><%= link_to 'Destroy', comment_path(activity.trackable.id), method: :delete %></li>
-
+      <% if current_user.id == activity.owner.id %>
+        <li><%= link_to 'Destroy', comment_path(activity.trackable.id), method: :delete %></li>
+      <% end %>
     </ul>
   </div>
-
-

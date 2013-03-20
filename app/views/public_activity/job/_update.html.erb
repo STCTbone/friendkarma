@@ -1,9 +1,9 @@
  <div class="job">
     <ul>
       <% if activity.trackable.asked %>
-          <li>Job Request: <%=  activity.trackable.membership.user.username %> : <%=  activity.trackable.name %></li>
+          <li>Request: <%=  activity.trackable.membership.user.username %> : <%=  activity.trackable.name %></li>
       <% else %>
-          <li>Job Offer: <%=  activity.trackable.job.user.username %> : <%=  activity.trackable.job.name %></li>
+          <li>Offer: <%=  activity.trackable.job.user.username %> : <%=  activity.trackable.job.name %></li>
       <% end %>
       <li><b><%=  activity.owner.username %> has accepted the request!</b></li>
       <li>Friend Karma Value: <%=  activity.trackable.friend_karma_value %></li>
