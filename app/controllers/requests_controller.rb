@@ -108,8 +108,6 @@ class RequestsController < ApplicationController
 		request_doer.save
 		request.completed = true
 		request.save
-
 		redirect_to dashboard_url, notice: "Request completed!"
 	end
-
 end
