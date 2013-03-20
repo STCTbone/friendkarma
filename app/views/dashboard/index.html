@@ -7,7 +7,7 @@
 		</div>
 		<hr/>
 	</div>
-	<div class="row-fluid">
+	<div class="container-fluid top-section_fk">
 		<div class="span3 offset1 palette-night profile_fk">
 			<div class="row-fluid icon_fk">
 				<%= link_to  user_path(current_user.id),{class: "offset10"} do %>
@@ -21,51 +21,46 @@
 			</div>
 		</div>
 		<div class="span5 offset1 palette-clouds request_fk">
-			<ul class="nav nav-tabs">
-			  <li class="active"><a href="#" data-toggle="tab">Offer</a></li>
-			  <li><a href="#" data-toggle="tab">Request</a></li>
-			</ul>
-			<div class="row-fluid">
-				<div class="span11 offset1">
-					<textarea placeholder="Can someone get me a coffee?" id="textbox_fk"></textarea>
+		  <ul class="nav nav-tabs" id="tab_fk">
+	 	    <li><a href="#offer_tab">Offer</a></li>
+		    <li><a href="#request_tab">Request</a></li>
+		  </ul>
+		  <div class="tab-content">
+			<!-- this is the content behind the offer tab -->
+		    <div class="tab-pane active" id="offer_tab">
+		  	  <div class="row-fluid">
+			    <div class="span11 offset1">
+			      <textarea placeholder="If anyone needs something from Intelligentsia, let me know." id="textbox_fk"></textarea>
 				</div>
 				<div class="row-fluid">
-					<div class="span4 offset1">
-						<p>To Whom:</p>
-					</div>
+				  <div class="span4 offset1">
+				    <p>To Whom:</p>
+				  </div>
 				</div>
 				<div class="row-fluid">
-					<div class="span3 offset1">
-					  <select>
-			            <option value="0" selected="selected">Choose Group</option>
-			            <option value="1">Group 1</option>
-			            <option value="2">Group 2</option>
-			          </select>
-					</div>
+				  <div class="span3 offset1">
+				    <select>
+			          <option value="0" selected="selected">Choose Group</option>
+			          <option value="1">Group 1</option>
+			          <option value="2">Group 2</option>
+			        </select>
+				  </div>
 				</div>
 				<div class="row-fluid">
-					<div class="span4 offset1">
-						<p>Time frame</p>
-					</div>
+				  <div class="span4 offset1">
+				    <p>Time frame</p>
+				  </div>
 				</div>
 				<div class="row-fluid">
-					<div class="span5 offset1">
-					  <select class="span10">
-			            <option value="0" selected="selected">Start</option>
-			            <option value="1">Group 1</option>
-			            <option value="2">Group 2</option>
-			          </select>
-					</div>
-					<div class="span1">	
-					  <p>to</p>
-					</div>
-					<div class="span5">
-					  <select class="span10">
-			            <option value="0" selected="selected">End</option>
-			            <option value="1">Group 1</option>
-			            <option value="2">Group 2</option>
-			          </select>
-					</div>
+				  <div class="span5 offset1">
+				    <input type="time" min="00:00"></input>
+				  </div>
+				  <div class="span1">	
+				    <p>to</p>
+				  </div>
+				  <div class="span5">
+				    <input type="time" min="00:00"></input>
+				  </div>
 				</div>
 				<div class="row-fluid">
 				  <div class="span4 offset4">
@@ -73,8 +68,55 @@
 				  </div>
 				</div>
 				<br/>
-			</div>
-		</div>
+			  </div>
+	        </div>
+			<!-- this is the content behind the request tab -->
+			<div class="tab-pane" id="request_tab">
+		  	  <div class="row-fluid">
+			    <div class="span11 offset1">
+			      <textarea placeholder="Can someone get me a coffee?" id="textbox_fk"></textarea>
+				</div>
+				<div class="row-fluid">
+				  <div class="span4 offset1">
+				    <p>From Whom:</p>
+				  </div>
+				</div>
+				<div class="row-fluid">
+				  <div class="span3 offset1">
+				    <select>
+			          <option value="0" selected="selected">Choose Group</option>
+			          <option value="1">Group 1</option>
+			          <option value="2">Group 2</option>
+			        </select>
+				  </div>
+				</div>
+				<div class="row-fluid">
+				  <div class="span4 offset1">
+				    <p>Time frame</p>
+				  </div>
+				</div>
+				<div class="row-fluid">
+				  <div class="span5 offset1">
+				    <input type="time" min="00:00"></input>
+				  </div>
+				  <div class="span1">	
+				    <p>to</p>
+				  </div>
+				  <div class="span5">
+				    <input type="time" min="00:00"></input>
+				  </div>
+				</div>
+				<div class="row-fluid">
+				  <div class="span4 offset4">
+				    <a href="#" class="btn btn-large btn-block btn-success">Submit</a>
+				  </div>
+				</div>
+				<br/>
+			  </div>
+	        </div>
+	      </div>
+<!-- the div below this associates with the request_fk div -->
+		</div> 	
 	</div>
 	<br/>
 </div>
@@ -110,3 +152,10 @@
 	</div>
 </div>
 
+<!-- Javascript for Request and Offer Tab Toggle as noted in boostrap -->
+
+<script>
+  $('#tab_fk a:last').tab('show');
+</script>
+
+<!-- per mike maybe create index.js.erb file within dashboard views and put js here-->
