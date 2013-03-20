@@ -111,6 +111,5 @@ class RequestsController < ApplicationController
 
 		redirect_to dashboard_url, notice: "Request completed!"
 	end
->>>>>>> 2182a801a3537d497d28448810b2c559fb22e108
 
 end
