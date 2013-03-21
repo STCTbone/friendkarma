@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130318132328) do
+ActiveRecord::Schema.define(:version => 20130320222936) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(:version => 20130318132328) do
   create_table "jobs", :force => true do |t|
     t.string   "name"
     t.integer  "friend_karma_value"
-    t.datetime "time"
     t.integer  "group_id"
     t.integer  "membership_id"
     t.datetime "created_at",                            :null => false
@@ -73,8 +72,8 @@ ActiveRecord::Schema.define(:version => 20130318132328) do
     t.boolean  "flaky"
     t.boolean  "accepted"
     t.integer  "acceptor_id"
-    t.datetime "end_time"
     t.boolean  "completed",          :default => false
+    t.integer  "duration"
   end
 
   create_table "memberships", :force => true do |t|

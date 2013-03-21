@@ -2,6 +2,7 @@ class DashboardController < ApplicationController
 
   def index
     @jobs = current_user.jobs
+    @job = Job.new
     @groups = current_user.groups
     if params[:filter] == "Requests"
     @activities = PublicActivity::Activity.order("created_at desc").where(trackable_type: "Request")
