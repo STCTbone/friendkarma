@@ -28,36 +28,36 @@
 		  <div class="tab-content">
 			<!-- this is the content behind the offer tab -->
 		    <div class="tab-pane active" id="offer_tab">
-		  	  <div class="row-fluid">
 				  <%= form_for @job do |f| %>
-					<div class="span11 offset1">
-						<%= f.text_area :name, {placeholder: "What's the plan?", id: "textbox_fk", rows: 5 }%>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-					<%= f.label "To Whom:" %>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span3 offset1">
-					<%= f.collection_select :group_id, current_user.groups, :id, :name %>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-					<%= f.label "Job Window" %>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span6 offset1">
-					  <%= f.number_field :duration %> <%= f.label "hours"%>
-				  </div>
-				</div>
+					<div class="row-fluid">
+						<div class="span11 offset1">
+							<%= f.text_area :name, {placeholder: "What's the plan?", id: "textbox_fk", rows: 5 }%>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span4 offset1">
+							<%= f.label "To Whom:" %>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span3 offset1">
+							<%= f.collection_select :group_id, current_user.groups, :id, :name %>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span4 offset1">
+							<%= f.label "Job Window" %>
+						</div>
+					</div>
+					<div class="row-fluid">
+						<div class="span6 offset1">
+							<%= f.number_field :duration %> <%= f.label "hours"%>
+					</div>
 				<div class="row-fluid">
 				  <div class="span4 offset4">
 					  <%= hidden_field_tag :asked, false %>
 					  <%= f.submit "Submit" , class: "btn btn-large btn-block btn-success"  %>
-			    </div>
+			          </div>
 				<% end %>
 				</div>
 				<br/>
@@ -68,7 +68,7 @@
 		  	  <div class="row-fluid">
 				  <%= form_for @job do |f| %>
 					<div class="span11 offset1">
-						<%= f.text_area :name, {placeholder: "What's the plan?", id: "textbox_fk",  rows: 5} %>
+						<%= f.text_area :name, {placeholder: "What's the plan?", id: "textbox_fk", rows: 5} %>
 				</div>
 				<div class="row-fluid">
 				  <div class="span4 offset1">
