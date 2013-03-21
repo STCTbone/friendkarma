@@ -20,14 +20,14 @@
 				<p><%= current_user.friend_karma %>  K-POINTS</p>
 			</div>
 		</div>
-		<div class="span5 offset1 palette-clouds request_fk">
+		<div class="span5 offset1 palette-clouds request_fk" style="height: 415px;">
 		  <ul class="nav nav-tabs" id="tab_fk">
 	 	    <li><a href="#offer_tab">Offer</a></li>
 		    <li><a href="#request_tab">Request</a></li>
 		  </ul>
 		  <div class="tab-content">
 			<!-- this is the content behind the offer tab -->
-		    <div class="tab-pane active" id="offer_tab">
+		    <div class="tab-pane active" id="offer_tab"">
 				  <%= form_for @job do |f| %>
 					<div class="row-fluid">
 						<div class="span11 offset1">
