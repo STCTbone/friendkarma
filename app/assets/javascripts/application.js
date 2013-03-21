@@ -13,3 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+
+// Javascript for Request and Offer Tab Toggle as noted in boostrap
+
+
+<script>
+  $('#tab_fk a:last').tab('show');
+</script>
