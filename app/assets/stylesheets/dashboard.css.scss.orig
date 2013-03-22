@@ -43,6 +43,6 @@
 #textbox_fk {
 	height: 6em;
 }
-#offer_tab {
+#offer_container{
 	height: 415px;
 }
