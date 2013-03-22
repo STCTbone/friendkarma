@@ -1,7 +1,6 @@
 // Place all the styles related to the Dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-<<<<<<< HEAD
 
 .user_fk {
 	font-size: 15px;
@@ -47,5 +46,3 @@
 #offer_tab {
 	height: 415px;
 }
-=======
->>>>>>> Dashboard
