@@ -1,27 +1,43 @@
-<h1>Listing requests</h1>
+<%= render 'layouts/navbar'%>
+<div class="row-fluid">
+  <div class="span5 offset1">
+    <h1 id="header_font">Listing requests</h1>
+  </div>
+</div>
 
-<table>
-  <tr>
-    <th>Job</th>
-    <th>User</th>
-    <th>Request text</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row-fluid">
+	<div class="tile span 10 offset1">
+		<table class="table">
+		  <thead>
+  			<tr>
+			    <th>Job</th>
+			    <th>User</th>
+			    <th>Request text</th>
+			    <th></th>
+			    <th></th>
+			    <th></th>
+			  </tr>
+			</thead>
 
-<% @requests.each do |request| %>
-  <tr>
-    <td><%= request.job_id %></td>
-    <td><%= request.membership_id %></td>
-    <td><%= request.request_text %></td>
-    <td><%= link_to 'Show', request %></td>
-    <td><%= link_to 'Edit', edit_request_path(request) %></td>
-    <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
+			<% @requests.each do |request| %>
+			<tbody>
+			  <tr>
+			    <td><%= request.job_id %></td>
+			    <td><%= request.membership_id %></td>
+			    <td><%= request.request_text %></td>
+			    <td><%= link_to 'Show', request %></td>
+			    <td><%= link_to 'Edit', edit_request_path(request) %></td>
+			    <td><%= link_to 'Destroy', request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			  </tr>
+			</tbody>			
+		<% end %>
+		</table>
+	</div>
+</div>
 
 <br />
-
-<%= link_to 'New Request', new_request_path %>
+<div class="row-fluid">
+	<div class="tile span4 offset2">
+		<%= link_to 'New Request', new_request_path %>
+	</div>
+</div>

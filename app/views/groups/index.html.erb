@@ -1,43 +1,35 @@
 
 <%= render 'layouts/navbar'%>
-<h1><%= current_user.username %>'s Groups</h1>
-
-<table>
-
-
-<% @groups.each do |group| %>
-    <tr>
-      <td><b><%= group.name %></b></td>
-    <table>
-      <tr><td><%= link_to 'Group Details', group %></td></tr>
-      <tr><td>Members: </td>
-          <td><% group.users.each do |groupuser| %>
-          <a><%= groupuser.username %>. </a>
-          <% end %>
-          </td>
-      </tr>
-      </tr>
-</table>
-<br />
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Group', new_group_path %>
-<table>
-<br />
-<br />
-  ==============================
-  <br />
-  <br />
-  This is for development purposes only. Edit in the group_id in the link to join the corresponding group to bypass the email invitation system
-  <br />
-  <br />
-  ==============================
-  <br />
-  <br />
-  <a href="/memberships?group_id=1" data-method="post" rel="nofollow">Join Group</a>
-  <br />
-  <br />
-===============================
+<div class="row-fluid">
+  <div class="span5 offset1">	
+    <h1 id="header_font"><%= current_user.username %>'s Groups</h1>
+  </div>
+</div>
+<div class="row-fluid">
+	<div class="tile span6 offset1">
+		<table>
+		<% @groups.each do |group| %>
+		    <tr>
+		      <td><b><%= group.name %></b></td>
+		    <table>
+		      <tr><td><%= link_to 'Group Details', group %></td></tr>
+		      <tr><td>Members: </td>
+		          <td><% group.users.each do |groupuser| %>
+		          <a><%= groupuser.username %>. </a>
+		          <% end %>
+		          </td>
+		      </tr>
+		      </tr>
+		</table>
+		<br />
+		<% end %>
+		</table>
+	</div>
+</div>
+<br/>
+<div class="row-fluid">
+	<div class="tile span4 offset2">
+	  <%= link_to 'New Group', new_group_path %>
+	  <a href="/memberships?group_id=1" data-method="post" rel="nofollow">Join Group</a>
+	</div>
+</div>
