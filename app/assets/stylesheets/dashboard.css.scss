@@ -1,3 +1,48 @@
 // Place all the styles related to the Dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user_fk {
+	font-size: 15px;
+	font-color: #34495e;
+	padding: 13px 20px 13px 0;
+	margin: auto;
+}
+
+.profile_fk {
+	height: auto;
+}
+
+.icon_fk {
+}
+
+.profile_content {
+	text-align:center !important;	
+}
+
+.profile_pic {
+	border: solid black 2px;
+	height: 75px;
+} 
+
+.request_fk {
+	height: auto;
+}
+
+.feed_header_fk {
+	border: solid lightgrey 1px;
+}
+
+.feed_filter_fk {
+}
+
+.feed_filter_fake_content {
+	background-color: lightgrey;
+}
+
+#textbox_fk {
+	height: 6em;
+}
+#offer_tab {
+	height: 415px;
+}

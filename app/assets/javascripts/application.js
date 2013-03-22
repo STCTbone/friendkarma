@@ -13,15 +13,3 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
-
-
-// Javascript for Request and Offer Tab Toggle as noted in boostrap
-
-// 
-// $(document).ready(function(event){ 
-//   $('#myTab a').click(function (e) {
-//     e.preventDefault();
-//     $(this).tab('show');
-// })
-// });

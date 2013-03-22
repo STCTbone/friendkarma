@@ -5,49 +5,55 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 <body>
 	
+
 <div class="navbar navbar-fixed-top">
 	<div class="navbar-inner">
-      <% if current_user %>
-	  <a class="brand" href="#">friendkarma: <span class="user_fk"><%= current_user.username %></span></a>
-	  <ul class="nav pull-right">
-	    <li>
-	        <%= link_to "Profile", user_path(current_user.id) %>
-		</li>
-		<li>
-	        <%= link_to "Dashboard", dashboard_path %>
-		</li>
-		<li>
-	        <%= link_to "My Groups", groups_path %>
-		</li>
-		<li>
-	        <%= link_to "Jobs", jobs_path %>
-		</li>
-		<li>	
-	        <%= link_to "Requests", requests_path %>
-		</li>
-		<li>
-	        <%= link_to "Logout", :logout %>
-		</li>
-	    <% else %>
-		<li>
-	    	<%= link_to "Register", new_user_path %>
-		</li>
-		<li>
-	        <%= link_to "Login", :login %>
-		</li>
-      </ul>
-	  <% end %>
+		<div class="container">
+			<a class="brand" href="#">friendkarma</a>
+			<ul class="nav pull-right">
+		   	 	<% if current_user %>
+				<li class="user_fk">
+			        <%= current_user.username %>
+				</li>
+				<li>
+			        <%= link_to "Profile", user_path(current_user.id) %>
+				</li>
+				<li>
+			        <%= link_to "Dashboard", dashboard_path %>
+				</li>
+				<li>
+			        <%= link_to "My Groups", groups_path %>
+				</li>
+				<li>
+			        <%= link_to "Jobs", jobs_path %>
+				</li>
+				<li>	
+			        <%= link_to "Requests", requests_path %>
+				</li>
+				<li>
+			        <%= link_to "Logout", :logout %>
+				</li>
+			    <% else %>
+				<li>
+			    	<%= link_to "Register", new_user_path %>
+				</li>
+				<li>
+			        <%= link_to "Login", :login %>
+				</li>
+			    <% end %>
+			</ul>
+		</div>
 	</div>
 </div>
 
 <div>
-  <p id="notice"></p>
+    <p id="notice"></p>
 </div>
+
 <%= yield %>
+
 </body>
 </html>
