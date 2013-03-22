@@ -1,7 +1,12 @@
 FriendKarma::Application.routes.draw do
 
+
   resources :invitations
 
+  get "/interested_user" => "interested_user#index", as: 'interested_users'
+  post "/interested_user" => "interested_user#create", as: 'interested_user'
+
+  resources :interested_user
 
   get "oauths/oauth"
   get "/dashboard" => "dashboard#index", as: 'dashboard'
@@ -11,7 +16,7 @@ FriendKarma::Application.routes.draw do
 
   resources :password_resets
 
-  root to: 'user_sessions#new'
+  root to: 'interested_user#index'
 
   resources :users do
 

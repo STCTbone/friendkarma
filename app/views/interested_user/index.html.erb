@@ -1,0 +1,35 @@
+
+<div class="container-fluid" id="banner">
+<!-- profile-fk stands for profile friendkarma, i will use this to semantically markup areas that I might need to individually style later, this will continue throughout this file with the -fk nomenclature -->
+	<div class="container-fluid">
+		<br/>
+		<div class="span4 offset4">
+			<%= image_tag 'logo.png'%>
+		</div>
+	</div>
+</div>
+
+	<div class="container-fluid palette-night feed_section_fk" id="info_tab">
+		<div class="row-fluid">
+			<div class="span5 offset3" id="banner-row">
+				<h3 id="info_banner">A way to request or offer favors between you and people in your social circle</h3>
+			</div>
+		</div>
+
+			<div class=" span2 offset3 ">
+				<div class "row-fluid">
+					<%= image_tag "MAIL.png"%>
+				</div>
+				<div class="row-fluid">
+					<p> <strong>Sign up for updates</strong></p>
+				</div>
+			</div>
+			<div class="span3 palette-clouds request_fk" id="email_info_tab">
+				<%= form_for @interested_user do |f| %>
+					<%= f.text_field :email, placeholder: "Enter your email here" %>
+					<br />
+					<%= f.submit "I'd like more info", class: "btn btn-success btn-large btn-block" %>
+				<% end %>
+				<%= link_to "Sign in", new_user_session_path, class: "btn btn-success btn-large btn-block" %>
+			</div>
+	</div>

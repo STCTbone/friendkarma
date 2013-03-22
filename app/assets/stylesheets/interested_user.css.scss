@@ -1,0 +1,39 @@
+// Place all the styles related to the interested_user controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#info_tab{
+	color: white;
+	text-align: center;
+}
+
+#banner {
+	background-image: url('backgroundzigzag.png');
+	background-repeat: repeat-x;
+}
+
+#info_banner {
+	text-align: center;
+}
+
+#email_info_tab {
+	border-radius:10px;
+	text-align: center;
+	padding:  25px 75px 15px 75px;
+}
+
+#info_tab {
+
+	font-family: 'Lato', sans-serif;
+	border-bottom: 1px white solid;
+}
+
+h1#info_tab {
+	font-size: 18pt;
+	line-height: .2em;
+}
+
+#banner-row {
+	border-bottom: 1px white solid;
+	margin-bottom: 25px;
+}
