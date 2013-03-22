@@ -1,5 +1,5 @@
 <div class="container-fluid palette-warning profile_section_fk">
-<!-- profile-fk stands for profile friendkarma, i will use this to semantically markup areas that I might need to individually style later, this will continue throughout this file with the -fk nomenclature -->
+<!-- profile_fk stands for profile friendkarma, i will use this to semantically markup areas that I might need to individually style later, this will continue throughout this file with the _fk nomenclature -->
 	<div class="container-fluid">
 		<br/>
 		<div class="span4 center">
@@ -8,7 +8,7 @@
 		<hr/>
 	</div>
 	<div class="container-fluid top-section_fk">
-		<div class="span3 offset1 palette-night profile_fk">
+		<div class="span2 tile profile_fk">
 			<div class="row-fluid icon_fk">
 				<%= link_to  user_path(current_user.id),{class: "offset10"} do %>
 					<i class="icon-cog palette-clouds"></i>
@@ -20,128 +20,90 @@
 				<p><%= current_user.friend_karma %>  K-POINTS</p>
 			</div>
 		</div>
-		<div class="span5 offset1 palette-clouds request_fk">
-		  <ul class="nav nav-tabs" id="tab_fk">
-	 	    <li><a href="#offer_tab">Offer</a></li>
-		    <li><a href="#request_tab">Request</a></li>
-		  </ul>
+		<div class="span1"></div>
+		<div class="span6 tile request_fk">
+		  <div class="row-fluid">
+		    <ul class="nav nav-tabs" id="tab_fk">
+	 	      <li class="span6 active"><a href="#offer_tab" data-toggle="tab">Offer</a></li>
+		      <li class="span6"><a href="#request_tab" data-toggle="tab">Request</a></li>
+		    </ul>
+		  </div>
 		  <div class="tab-content">
 			<!-- this is the content behind the offer tab -->
 		    <div class="tab-pane active" id="offer_tab">
 		  	  <div class="row-fluid">
-				  <%= form_for @job do |f| %>
-					<div class="span11 offset1">
-						<%= f.text_area :name, {placeholder: "What's the plan?", id: "textbox_fk"}%>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-					<%= f.label "To Whom:" %>
+			    <%= form_for @job do |f| %>
+				  <div class="span11 offset1">
+				    <%= f.text_area :name, {placeholder: "I'm heading to Starbucks if anyone wants anything?", id: "textbox_fk"}%>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span3 offset1">
-					<%= f.collection_select :group_id, current_user.groups, :id, :name %>
+				  <div class="row-fluid">
+				    <div class="span4 offset1">
+				      <%= f.label "To Whom:" %>
+					</div>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-					<%= f.label "Job Window" %>
+				  <div class="row-fluid">
+					<div class="span3 offset1">
+					  <%= f.collection_select :group_id, current_user.groups, :id, :name %>
+					</div>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span6 offset1">
+				  <div class="row-fluid">
+					<div class="span4 offset1">
+					  <%= f.label "Job Window" %>
+					</div>
+				  </div>
+				  <div class="row-fluid">
+				    <div class="span6 offset1">
 					  <%= f.number_field :duration %> <%= f.label "hours"%>
+					</div>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset4">
-					  <%= hidden_field_tag :asked, false %>
-					  <%= f.submit "Submit" , class: "btn btn-large btn-block btn-success"  %>
-			    </div>
+				  <div class="row-fluid">
+				    <div class="span4 offset4">
+				      <%= hidden_field_tag :asked, false %>
+				      <%= f.submit "Submit" , class: "btn btn-large btn-block btn-success"  %>
+				    </div>
+				  </div>
 				<% end %>
-				</div>
-				<br/>
 			  </div>
 	        </div>
 			<!-- this is the content behind the request tab -->
 			<div class="tab-pane" id="request_tab">
 		  	  <div class="row-fluid">
-				  <%= form_for @job do |f| %>
-					<div class="span11 offset1">
-						<%= f.text_area :name, {placeholder: "What's the plan?", id: "textbox_fk"}%>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-					<%= f.label "To Whom:" %>
+				<%= form_for @job do |f| %>
+			      <div class="span11 offset1">
+				    <%= f.text_area :name, {placeholder: "I really need someone to grab me lunch!", id: "textbox_fk"}%>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span3 offset1">
-					<%= f.collection_select :group_id, current_user.groups, :id, :name %>
+				  <div class="row-fluid">
+				    <div class="span4 offset1">
+				      <%= f.label "From Whom:" %>
+				    </div>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-					<%= f.label "Job Window" %>
+				  <div class="row-fluid">
+				    <div class="span3 offset1">
+					  <%= f.collection_select :group_id, current_user.groups, :id, :name %>
+				    </div>
+			      </div>
+				  <div class="row-fluid">
+				    <div class="span4 offset1">
+				      <%= f.label "Job Window" %>
+				    </div>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span6 offset1">
+				  <div class="row-fluid">
+				    <div class="span6 offset1">
 					  <%= f.number_field :duration %> <%= f.label "hours"%>
+				    </div>
 				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset4">
+				  <div class="row-fluid">
+				    <div class="span4 offset4">
 					  <%= hidden_field_tag :asked, true %>
 					  <%= f.submit "Submit" , class: "btn btn-large btn-block btn-success"  %>
-			    </div>
+			        </div>
+			      </div>
 				<% end %>
-				</div>
-		  	  <div class="row-fluid">
-			    <div class="span11 offset1">
-			      <textarea placeholder="Can someone get me a coffee?" id="textbox_fk"></textarea>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-				    <p>From Whom:</p>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span3 offset1">
-				    <select>
-			          <option value="0" selected="selected">Choose Group</option>
-			          <option value="1">Group 1</option>
-			          <option value="2">Group 2</option>
-			        </select>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset1">
-				    <p>Time frame</p>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span5 offset1">
-				    <input type="time" min="00:00"></input>
-				  </div>
-				  <div class="span1">	
-				    <p>to</p>
-				  </div>
-				  <div class="span5">
-				    <input type="time" min="00:00"></input>
-				  </div>
-				</div>
-				<div class="row-fluid">
-				  <div class="span4 offset4">
-				    <a href="#" class="btn btn-large btn-block btn-success">Submit</a>
-				  </div>
-				</div>
-				<br/>
 			  </div>
 	        </div>
-	      </div>
-<!-- the div below this associates with the request_fk div -->
-		</div> 	
+	      </div> <!-- this is the div for "tab-content"-->
+		</div> 	<!-- this div associates with the request_fk div -->
+		<div class="span3"></div>
 	</div>
 	<br/>
 </div>
@@ -166,13 +128,8 @@
 					<% @activities.each do |activity| %>
 						<%= render_activity(activity) if activity.trackable %>
 					<% end %>
-					<p></p>
-				</div>
-				<div class="feed_filter_fake_content">
-					<p>Offer 1</p>
 				</div>
 			</div>
-
 		</div>
 	</div>
 </div>

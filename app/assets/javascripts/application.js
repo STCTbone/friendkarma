@@ -18,7 +18,10 @@
 
 // Javascript for Request and Offer Tab Toggle as noted in boostrap
 
-
-<script>
-  $('#tab_fk a:last').tab('show');
-</script>
+// 
+// $(document).ready(function(event){ 
+//   $('#myTab a').click(function (e) {
+//     e.preventDefault();
+//     $(this).tab('show');
+// })
+// });
