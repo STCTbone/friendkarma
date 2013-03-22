@@ -1,10 +1,10 @@
-<div class="navbar navbar-fixed-top">
+<div class="navbar margin-fix">
 	        <div class="navbar-inner">
-			                <div class="container">                        <a class="brand" href="#">friendkarma</a>                        <ul class="nav pull-right">
+			                       <a class="brand" href="#">friendkarma:<span class="user_fk"> <%= current_user.username%></span></a>                        <ul class="nav pull-right">
 							                                <% if current_user %>
-												                                <li class="user_fk">
-																                                <%= current_user.username %>
-																				                                </li>
+												                                
+																                                
+																				                                
 																								                                <li>
 																												                                <%= link_to "Profile", user_path(current_user.id) %>
 																																                                </li>
@@ -32,6 +32,5 @@
 																																																																																																																								                                    </li>
 																																																																																																																												                                <% end %>
 																																																																																																																																                        </ul>
-																																																																																																																																			                </div>
 																																																																																																																																					        </div>
 																																																																																																																																					</div>
