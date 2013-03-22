@@ -10,8 +10,8 @@ body {
 }
 
 .navbar-inner .nav li a {
-  background-color: #34495e;
-  color: #BBB;
+/*  background-color: #34495e;
+  color: #BBB;*/
   height: 15px;
 }
 
@@ -22,4 +22,78 @@ body {
 .navbar-inner .nav li a:active {
   background-color: #95A5A6;
   border: 1px solid #BDC3C7;
+}
+
+/*unique classes*/
+
+.top-section_fk {
+	padding-bottom: 20px;
+}
+
+.user_fk {
+	font-size: 15px;
+	color: #34495e;
+/*	padding: 13px 40px 13px 0;*/
+}
+
+.navbar .brand {
+  margin-left: 20px;	
+}
+
+.profile_fk {
+	background-color: #34495e;
+	height: auto;
+}
+
+.icon_fk {
+}
+
+.profile_content {
+	text-align:center !important;	
+}
+
+.profile_pic {
+	border: solid black 2px;
+	height: 75px;
+} 
+
+.request_fk {
+	background-color: #ecf0f1;
+	color: #bdc3c7;
+	height: auto;
+	padding: 0;
+}
+
+.feed_header_fk {
+	border: solid lightgrey 1px;
+}
+
+.feed_filter_fk {
+}
+
+.feed_filter_fake_content {
+	background-color: lightgrey;
+}
+
+#textbox_fk {
+	height: 6em;
+}
+
+
+
+
+
+/*this hides the profile when in mobile view*/
+
+@media all and (max-width: 767px) {
+	.profile_fk {
+		display: none;
+	}
+	
+}
+
+@media all and (max-width: 825px) {
+	.navbar .brand {
+		display: none;
+	}
 }
