@@ -1,8 +1,20 @@
 //cut and paste the application_css files here because of the cascasding issues
 
 
-body {
-	padding: 40px 0 0 0;
+
+#karma_font {
+	color: #ecf0f1;
+}
+
+.feed_button {
+	background-color: #ecf0f1;
+	color: #ecf0f1;
+	padding: 2px;
+	border-radius: 5px;
+}
+
+.margin-fix {
+	margin-bottom: -10px !important;
 }
 
 .navbar-inner .container {
