@@ -1,31 +1,36 @@
 <p id="notice"><%= notice %></p>
 
+</br>
 
-<%= image_tag(@user.avatar)%>
-<p>
-  <b>Username:</b>
-  <%= @user.username %>
-</p>
+<div class="container">
+  <div>
+	<%= image_tag(@user.avatar)%>
+	<p>
+	  <b>Username:</b>
+	  <%= @user.username %>
+	</p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-<p>
-  <b>First:</b>
-  <%= @user.first %>
-</p>
+	<p>
+	  <b>Email:</b>
+	  <%= @user.email %>
+	</p>
+	<p>
+	  <b>First:</b>
+	  <%= @user.first %>
+	</p>
 
-<p>
-  <b>Last:</b>
-  <%= @user.last %>
-</p>
+	<p>
+	  <b>Last:</b>
+	  <%= @user.last %>
+	</p>
 
-<p>
-  <b>Phone:</b>
-  <%= @user.phone %>
-</p>
+	<p>
+	  <b>Phone:</b>
+	  <%= @user.phone %>
+	</p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+  </div>
+</div>
