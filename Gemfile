@@ -8,6 +8,7 @@ gem 'fog'
 
 group :development do
   gem 'sqlite3'
+  gem 'brakeman', require: false
 end
 
 group :production do
