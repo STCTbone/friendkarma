@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   end
   # attr_accessible :title, :body
   mount_uploader :avatar, AvatarUploader
-  attr_accessible :username, :email, :password, :password_confirmation, :first, :last, :phone, :friend_karma, :admin, :favors_done, :favors_received, :avatar, :invitor, :invitee
+  attr_accessible :username, :email, :password, :password_confirmation, :first, :last, :phone, :friend_karma, :favors_done, :favors_received, :avatar, :invitor, :invitee
 
   has_many :memberships
   has_many :groups, through: :memberships
