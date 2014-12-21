@@ -12,6 +12,11 @@ group :development do
   gem 'metric_fu'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'fuubar'
+end
+
 group :production do
   gem 'pg'
 end
