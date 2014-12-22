@@ -10,11 +10,14 @@ group :development do
   gem 'sqlite3'
   gem 'brakeman', require: false
   gem 'metric_fu'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'fuubar'
+  gem 'pry'
 end
 
 group :test do

@@ -13,3 +13,17 @@ class Request < ActiveRecord::Base
   end
 
 end
+
+# == Schema Information
+#
+# Table name: requests
+#
+#  id            :integer          not null, primary key
+#  job_id        :integer
+#  membership_id :integer
+#  request_text  :text
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  completed     :boolean          default(FALSE)
+#  acceptor_id   :integer
+#

@@ -7,3 +7,14 @@ class Membership < ActiveRecord::Base
   has_many :comments
   has_many :requests
 end
+
+# == Schema Information
+#
+# Table name: memberships
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  group_id   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#

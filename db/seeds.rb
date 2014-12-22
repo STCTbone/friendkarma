@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+PublicActivity.enabled = false
+
 users = [
     {username: "Matt", first: 'Matt', last: 'Rieger', email: 'matthew.rieger@gmail.com', friend_karma: 0, phone: '8476410915'},
     {username: "Michael", first: 'Michael', last: 'Mahaffey', email: 'mayhaffs@gmail.com', friend_karma: 0, phone: '8475255118'},
@@ -68,7 +70,8 @@ memberships = [
     {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Matt").id},
     {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Goodguygreg").id},
     {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Dumbledore").id},
-    {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Darthvader").id}
+    {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Darthvader").id},
+    {group_id: Group.find_by_name('Friends').id, user_id: User.find_by_username("Shawnna").id}
 
 ]
 
@@ -76,20 +79,33 @@ Membership.destroy_all
 Membership.create(memberships)
 
 jobs = [
-    {name: "Groceries", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Coworkers').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Coworkers').id, User.find_by_username("Matt").id ).first.id},
-    {name: "Coffee", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Family').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Family').id, User.find_by_username("Michael").id).first.id},
-    {name: "Laundry", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Friends').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Friends').id, User.find_by_username("Shawnna").id).first.id},
-    {name: "Office Supplies", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Coworkers').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Coworkers').id, User.find_by_username("Matt").id).first.id},
-    {name: "Booze", friend_karma_value: 1, time: (Time.now + rand(24.hours)), group_id: Group.find_by_name('Family').id, membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Family').id, User.find_by_username("Michael").id).first.id},
+    {name: "Groceries", duration: 1, friend_karma_value: 1, group_id: Group.find_by_name('Coworkers').id,
+     membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Coworkers').id,
+                                     User.find_by_username("Matt").id).first.id},
+    {name: "Coffee", duration: 1, friend_karma_value: 1, group_id: Group.find_by_name('Family').id,
+     membership_id: Membership.where("group_id = ? AND user_id = ?",
+                                     Group.find_by_name('Family').id,
+                                     User.find_by_username("Michael").id).first.id},
+    {name: "Laundry", duration: 1, friend_karma_value: 1,
+     group_id: Group.find_by_name('Friends').id,
+     membership_id: Membership.where("group_id = ? AND user_id = ?",
+                                     Group.find_by_name('Family').id,
+                                     User.find_by_username("Shawnna").id).first.id},
+    {name: "Office Supplies", duration: 1, friend_karma_value: 1 , group_id: Group.find_by_name('Coworkers').id,
+     membership_id: Membership.where("group_id = ? AND user_id = ?",Group.find_by_name('Coworkers').id,
+                                     User.find_by_username("Matt").id).first.id},
+    {name: "Booze", duration: 1, friend_karma_value: 1, group_id: Group.find_by_name('Family').id,
+     membership_id: Membership.where("group_id = ? AND user_id = ?",
+                                     Group.find_by_name('Family').id, User.find_by_username("Michael").id).first.id},
 ]
 
 Job.destroy_all
-Job.create(jobs)
+Job.create!(jobs)
 
 requests = [
     {job_id: Job.find_by_name("Groceries").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Coworkers'), User.find_by_username("Matt")).first.id, request_text: "Can you get me some milk?"},
     {job_id: Job.find_by_name("Coffee").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Michael")).first.id, request_text: "How about a latte?"},
-    {job_id: Job.find_by_name("Laundry").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Friends'), User.find_by_username("Shawnna")).first.id, request_text: "My undies are grungy"},
+    {job_id: Job.find_by_name("Laundry").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Shawnna")).first.id, request_text: "My undies are grungy"},
     {job_id: Job.find_by_name("Office Supplies").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Coworkers'), User.find_by_username("Matt")).first.id, request_text: "Double espresso, please."},
     {job_id: Job.find_by_name("Booze").id, membership_id: Membership.where("group_id = ? AND user_id = ?", Group.find_by_name('Family'), User.find_by_username("Michael")).first.id, request_text: "Olde English please."}
 ]
@@ -107,3 +123,4 @@ comments = [
 
 Comment.destroy_all
 Comment.create(comments)
+PublicActivity.enabled = true
